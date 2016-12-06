@@ -20,8 +20,7 @@
       <button class="navbar-toggler hidden-lg-up" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"></button>
       <div class="collapse navbar-toggleable-md" id="navbarResponsive">
         <a class="navbar-brand" href="#">
-          <img src="/assets/brand/bootstrap-solid.svg" width="30" height="30" class="d-inline-block align-top" alt="">
-          Bootstrap
+          <img src="img/logo.svg" width="100" height="30" class="d-inline-block align-top" alt="Logo">
         </a>
         <ul class="nav navbar-nav">
           <li class="nav-item active">

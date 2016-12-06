@@ -4,14 +4,7 @@
 <?php require "includes/header.php"; ?>
 
   <header>
-    <div class="header-img">
-      <div class="container-fluid">
-        <div class="col-xs text-xs-center">
-          <img class="logo" src="img/logo.svg">
-          <h1>Le son analogique du 21 ème siècle</h1>
-        </div>
-      </div>
-    </div>
+    <img src="img/logo.svg" alt="Logo Think Analog">
   </header>
 
 <?php require "includes/footer.php"; ?>

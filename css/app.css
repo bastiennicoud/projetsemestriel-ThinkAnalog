@@ -10,34 +10,3 @@ body{
 footer{
 
 }
-
-.header-img{
-  position: absolute;
-  top: 0px;
-  left: 0px;
-  right: 0px;
-  bottom: 0px;
-  background-size: cover;
-  background-repeat: repeat;
-  background-position: center center;
-  background-image: url(../img/test.jpg);
-}
-
-.logo{
-  margin-top: 20%;
-  width: 40%;
-}
-
-@media (max-width: 992px) {
-  .logo{
-    margin-top: 20%;
-    width: 60%;
-  }
-}
-
-@media (max-width: 767px) {
-  .logo{
-    margin-top: 20%;
-    width: 90%;
-  }
-}
