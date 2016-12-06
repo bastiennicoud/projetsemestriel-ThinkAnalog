@@ -1,7 +1,7 @@
 <!-- Bastien Nicoud - Think Analog -->
 <!-- Projet semestriel - novembre 2016 -->
 
-<?php require "header.php"; ?>
+<?php require "includes/header.php"; ?>
 
   <header>
     <div class="header-img">
@@ -14,4 +14,4 @@
     </div>
   </header>
 
-<?php require "footer.php"; ?>
+<?php require "includes/footer.php"; ?>

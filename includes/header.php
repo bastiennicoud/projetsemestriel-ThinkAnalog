@@ -15,3 +15,7 @@
     <link href="css/app.css" rel="stylesheet" /> <!-- Chargement de la feuille de style du site -->
   </head>
   <body>
+
+    <nav>
+      <h1>heheh</h1>
+    </nav>
