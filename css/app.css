@@ -35,3 +35,11 @@ footer{
   margin-left: auto;
   margin-right: auto;
 }
+
+.a-asize {
+  display: block;
+  margin-left: auto;
+  margin-right: 0px;
+  margin-top: 5px;
+  font-size: 10pt;
+}
