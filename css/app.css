@@ -1,6 +1,8 @@
 /* Bastien Nicoud - Think Analog */
 /* Projet semestriel - novembre 2016 */
 
+/* Toutes les classes spécifique a la partie administrative du site prennent le prefix a */
+
 @charset "utf-8";
 
 body{
@@ -9,4 +11,27 @@ body{
 
 footer{
 
+}
+
+/* Classes specifiques pour la partie admin du site */
+
+.a-bgcolor {
+  background: #ecf0f1;
+}
+
+.a-loginbox {
+  background: #bdc3c7;
+  padding: 20px;
+  border-radius: 10px;
+  margin-top: 28%;
+}
+
+.a-logomgbottom {
+  margin-bottom: 20px;
+}
+
+.a-btncenter {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }

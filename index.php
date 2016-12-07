@@ -1,7 +1,7 @@
 <!-- Bastien Nicoud - Think Analog -->
 <!-- Projet semestriel - novembre 2016 -->
 
-<?php require "includes/header.php"; ?>
+<?php require "includes/headernav.php"; ?>
 
   <header>
     <img src="img/logo.svg" alt="Logo Think Analog">
