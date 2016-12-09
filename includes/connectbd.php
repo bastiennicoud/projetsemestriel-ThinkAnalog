@@ -10,14 +10,14 @@
   $dbname   = "thinkanalog";
 
   // nouvel objet mysqli
-  $mysqli = new mysqli($server, $username, $pass, $dbname);
+  $dbconn = new mysqli($server, $username, $pass, $dbname);
 
   // definition du charset de communication avec la bd
-  $mysqli->set_charset('utf8');
+  $dbconn->set_charset('utf8');
 
   // erreur de connexion a la bd
-  if ($mysqli->connect_errno) {
-    echo "Echec lors de la connexion à MySQL : (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
+  if ($dbconn->connect_errno) {
+    echo "Echec lors de la connexion à MySQL : (" . $dbconn->connect_errno . ") " . $dbconn->connect_error;
   }
 
 ?>

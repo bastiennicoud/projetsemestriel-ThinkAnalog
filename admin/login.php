@@ -61,17 +61,19 @@ var_dump($user);
 
     <!-- Si errors n'est pas vide on affiche alors les erreurs -->
     <?php if(!empty($errors)): ?>
-    <div class="alert alert-danger" role="alert">
 
-      <!-- petite boucle pour afficher les erreurs ajoutées au tableau erreurs par php -->
-      <?php foreach ($errors as $key) : ?>
+      <div class="alert alert-warning" role="alert">
 
-        <p><?= $key ?></p>
+        <!-- petite boucle pour afficher les erreurs ajoutées au tableau erreurs par php -->
+        <?php foreach ($errors as $key) : ?>
 
-      <?php endforeach; ?>
+          <p><?= $key ?></p>
+
+        <?php endforeach; ?>
       
-    </div>
-  <?php endif; ?>
+      </div>
+      
+    <?php endif; ?>
 
     <form action="login.php" method="post">
       <div class="form-group">

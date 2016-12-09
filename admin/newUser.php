@@ -1,22 +1,75 @@
 <?php
 
+  // Juste un petit script pour créer les utilisateurs et les hash du mdp
+  // Ne pas mettre en ligne se script -> grosse faile de securité
+
   if ($_POST['username'] && $_POST['password']) {
 
+    // remplissage des variables username, hash du mdp, initialisation de la variable d'erreurs
     $passhash = password_hash($_POST['password'], PASSWORD_BCRYPT);
+    $userName = $_POST['username'];
+    $errors     = array();
 
+    // connexion a la bd
     require_once '../includes/connectbd.php';
-echo "ok";
-    $req = $mysqli->prepare("INSERT INTO users ('username','password') VALUES (? , ?);");
-echo "ok";
-    $req->bind_param("ss", $_POST['username'], $passhash);
-echo "ok";
-    $req->execute();
 
-    echo "l'utilisateur est crée";
+    // Preparationd de la requète
+    if (!$req = $dbconn->prepare("INSERT INTO users (`username`, `password`) VALUES (? , ?)")) {
 
+      // Gestion des erreurs
+      echo "Echec lors de la préparation : (" . $mysqli->errno . ") " . $mysqli->error;
+      $errors['preparation'] = "Erreur de preparation de la requete";
+
+    }
+
+    // Liage des parametres
+    if (!$req->bind_param("ss", $userName, $passhash)) {
+
+      // Gestion des erreurs
+      echo "Echec lors du liage des paramètres : (" . $stmt->errno . ") " . $stmt->error;
+      $errors['liage'] = "Erreur de liage des parametres";
+
+    }
+    
+    // execution de la requete
+    if (!$req->execute()) {
+
+      // Gestion des erreurs
+      echo "Echec lors de l'exécution de la requête : (" . $stmt->errno . ") " . $stmt->error;
+      $errors['execution'] = "Erreur d'execution de la requete";
+
+    }
+
+    // petit message pour l'utilisateur
+    if (empty($errors)) {
+
+      echo "l'utilisateur est crée.";
+
+    } else {
+
+      // reaffiche les erreurs stoquées dans le tableau --- pas vraiment utile dans notre cas
+      foreach ($errors as $key) {
+        echo $key;
+      }
+      exit();
+
+    }
+    
   }
+
 ?>
 
+<HTML>
+  <head>
+    <meta charset="utf-8" />
+    <title>Nouvel utilisateur TA</title>
+  </head>
+
+
+  <body>
+    <h3>Nouvel utilisateur Think Analog</h3>
+
+    <!-- Petit formulaire pour rentrer le données de nouveaux utilisateurs -->
     <form action="newUser.php" method="post">
       <div class="form-group">
         <input type="text" class="form-control" id="username" name="username" placeholder="Nom d'utilisateur" required>
@@ -26,3 +79,6 @@ echo "ok";
       </div>
       <button type="submit" class="btn btn-primary a-btncenter">Créer</button>
     </form>
+
+  </body>
+</HTML>
