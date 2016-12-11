@@ -62,10 +62,24 @@
             <p><?= $key ?></p>
 
           <?php endforeach; ?>
+
+            
         
         </div>
         
       <?php endif; ?>
+
+      <?php if(!empty($_SESSION['flash'])): ?>
+
+        <div class="alert alert-success" role="alert">
+
+          <p><?= $_SESSION['flash'] ?></p>
+          <?php $_SESSION['flash'] = ""; ?>
+
+        </div>
+
+      <?php endif; ?>
+
     </div>
   </div>
 

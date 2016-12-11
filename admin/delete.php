@@ -27,6 +27,7 @@
       $errors['execution'] = "Erreur d'execution de la requete";
     }
 
+    $_SESSION['flash'] = "Le produit a bien été supprimé";
     header('Location: admin.php');
 
   } else {

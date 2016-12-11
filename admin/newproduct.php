@@ -121,6 +121,7 @@
       }
 
       // on redirige une fois le produit bien créé
+      $_SESSION['flash'] = "Le produit a bien eté créé";
       header('Location: admin.php');
 
     }
