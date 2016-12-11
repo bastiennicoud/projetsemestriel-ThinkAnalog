@@ -6,47 +6,105 @@
     session_start();
     
     // on recupere les differentes informations dans 
-    $username   = $_POST['username'];
+    $userName   = $_POST['username'];
     $password   = $_POST['password'];
     $persistant = $_POST['persistant'];
     $errors     = array();
 
     require_once '../includes/connectbd.php';
 
-    $req = $mysqli->prepare("SELECT * FROM users WHERE username = 'Admin' ");
-    //$req->bind_param("s", $username);
-    $req->execute();
-    $user = $req->fetch();
-var_dump($user);
+    // Preparationd de la requète
+    if (!$req = $dbconn->prepare("SELECT * FROM users WHERE username = ?")) {
 
-    if ($req->num_rows == 0) {
+      // Gestion des erreurs
+      $errors['preparation'] = "Erreur de preparation de la requete";
 
-      $errors['username'] = "Cet utilisateur n'existe pas";
+    }
 
-    } else {
+    // Liage des parametres
+    if (!$req->bind_param("s", $userName)) {
 
-      if (password_verify($password, $user->password)) {
+      // Gestion des erreurs
+      $errors['liage'] = "Erreur de liage des parametres";
+
+    }
+    
+    // execution de la requete
+    if (!$req->execute()) {
+
+      // Gestion des erreurs
+      $errors['execution'] = "Erreur d'execution de la requete";
+
+    }
+    
+    // recuper le resultat et conversion en tableau
+    $res = $req->get_result();
+    $row = $res->fetch_assoc();
+    
+    // si un utilisateur existe en passe dans le if
+    if ($row['username'] && $row['password']) {
+
+      if (password_verify($password, $row['password'])) {
         
-        $_SESSION['userid'] = $user->id_user;
-        $_SESSION['username'] = $user->username;
+        $_SESSION['userID'] = $row['id_user'];
+        $_SESSION['userName'] = $row['username'];
 
+        // si l'utilisateur veut rester connecté meme apres avoir quité le navigateur
         if ($persistant == "yes") {
+
+          // on crée un token plus ou moin unique et aleatoire qu'on utilisera pour verifier l'utilisateur
+          $remembertoken = sha1($row['username'] . "tralala") . $row['id_user'] . sha1($row['username']);
+
+          // on crée un cookie pour 4 jours en utilisant le token comme valeur
+          setcookie('TAuserremember', $remembertoken , time() + 60*60*24*4);
           
-          $cookie = $pass->id_user . "--" . sha1($pass->username . 'afgyh');
-          setcookie('ThinkAnalog', $cookie, time() + 60*60*48);
+          // on enregistre ce token dans la bd pour pouvoir le comparer lors de la verification
+          // Preparationd de la requète
+          if (!$req = $dbconn->prepare("UPDATE users SET remember_token = ? WHERE id_user = ?")) {
+
+            // Gestion des erreurs
+            $errors['preparation'] = "Erreur de preparation de la requete";
+
+          }
+
+          // Liage des parametres
+          if (!$req->bind_param("si", $remembertoken, $row['id_user'])) {
+
+            // Gestion des erreurs
+            $errors['liage'] = "Erreur de liage des parametres";
+
+          }
+      
+          // execution de la requete
+          if (!$req->execute()) {
+
+            // Gestion des erreurs
+            $errors['execution'] = "Erreur d'execution de la requete";
+
+          }
+
         }
+
+        // une fois l'utilisateur bien authentifié on le redirige vers la page d'administration
+        header('Location: admin.php');
 
       } else {
 
-        $errors['password'] = "Le mot de passe est erroné";
+        // si le mot de passe est faux erreur
+        $errors['password'] = "Mot de passe erroné";
 
       }
+
+    } else {
+
+      // si l'utilisateur n'existe pas erreur
+      $errors['username'] = "Cet utilisateur n'existe pas";
 
     }
 
   }
 
-    require "../includes/header.php";
+  require "../includes/header.php";
 
 ?>
 

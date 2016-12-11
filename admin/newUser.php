@@ -17,7 +17,6 @@
     if (!$req = $dbconn->prepare("INSERT INTO users (`username`, `password`) VALUES (? , ?)")) {
 
       // Gestion des erreurs
-      echo "Echec lors de la préparation : (" . $mysqli->errno . ") " . $mysqli->error;
       $errors['preparation'] = "Erreur de preparation de la requete";
 
     }
@@ -26,7 +25,6 @@
     if (!$req->bind_param("ss", $userName, $passhash)) {
 
       // Gestion des erreurs
-      echo "Echec lors du liage des paramètres : (" . $stmt->errno . ") " . $stmt->error;
       $errors['liage'] = "Erreur de liage des parametres";
 
     }
@@ -35,7 +33,6 @@
     if (!$req->execute()) {
 
       // Gestion des erreurs
-      echo "Echec lors de l'exécution de la requête : (" . $stmt->errno . ") " . $stmt->error;
       $errors['execution'] = "Erreur d'execution de la requete";
 
     }
@@ -47,7 +44,7 @@
 
     } else {
 
-      // reaffiche les erreurs stoquées dans le tableau --- pas vraiment utile dans notre cas
+      // reaffiche les erreurs stoquées dans le tableau
       foreach ($errors as $key) {
         echo $key;
       }

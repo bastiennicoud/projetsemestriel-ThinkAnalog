@@ -1,5 +1,5 @@
 <?php
-  
+
   // bastien nicoud - projet semestriel - think analog v1
   // Connexion a la base de données
 
