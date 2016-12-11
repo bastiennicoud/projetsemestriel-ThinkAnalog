@@ -23,26 +23,20 @@
     // pouis on fais une requete pour savoir si il existe dans la bd et qu'un stilisateur y correspond
     // Preparationd de la requète
     if (!$req = $dbconn->prepare("SELECT * FROM users WHERE remember_token = ?")) {
-
       // Gestion des erreurs
       echo "Erreur de preparation de la requete";
-
     }
 
     // Liage des parametres
     if (!$req->bind_param("s", $cookie)) {
-
       // Gestion des erreurs
       echo "Erreur de liage des parametres";
-
     }
       
     // execution de la requete
     if (!$req->execute()) {
-
       // Gestion des erreurs
       echo "Erreur d'execution de la requete";
-
     }
 
     // recuper le resultat et conversion en tableau

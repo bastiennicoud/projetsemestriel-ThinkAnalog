@@ -3,7 +3,133 @@
   //recuperation de la session
   require_once '../includes/verifiyconn.php';
 
+  // ajout du produit dans la bd
+  // on passe dans le script si l'utilisateur a remplis le formulaire
+  if ($_POST['productname']) {
+    
+    // verification que les champs sont pleins (pas besoin de verifier le premier vu qu'on passe dans condition si il est rempli)
+    // recuperation des champs htmlspecialchars comme ça c'est fait
+    $productname        = htmlspecialchars($_POST['productname']);
+    $productsmalldesc   = htmlspecialchars($_POST['productsmalldesc']);
+    $productdescription = htmlspecialchars($_POST['productdescription']);
+    $productfeature     = htmlspecialchars($_POST['productfeature']);
+    $productconnect     = htmlspecialchars($_POST['productconnect']);
+    // initialisation tableau pour les erreurs
+    $errors = array();
+
+    // ecriture des erreurs si un champ na pas ete renseigné ou nom trop long
+    if (strlen($productname) > 250) {
+      $errors['productname'] = "Le nom du produit est trop long";
+    }
+    if ($productsmalldesc == "") {
+      $errors['productsmalldesc'] = "Vous n'avez pas rentré de description d'accroche.";
+    }
+    if ($productdescription == "") {
+      $errors['productdescription'] = "Vous n'avez pas rentré de description pour le produit.";
+    }
+    if ($productfeature == "") {
+      $errors['productfeature'] = "Vous n'avez pas rentré de caractéristique pour le produit.";
+    }
+    if ($productconnect == "") {
+      $errors['productconnect'] = "Vous n'avez pas rentré de connectique pour le produit.";
+    }
+
+
+    // ***********************************************
+    // INSERTION DANS LA BD
+    // si il ny a pas d'erreurs on est bon pour ajouter notre produit a la base de données
+    if (empty($errors)) {
+      
+      // connexion a la bas de données
+      require_once '../includes/connectbd.php';
+      // première requete on inser les données du produit
+      // Preparationd de la requète
+      if (!$req = $dbconn->prepare("INSERT INTO products (name, header, description) VALUES (?, ?, ?)")) {
+        // Gestion des erreurs
+        $errors['preparation'] = "Erreur de preparation de la requete";
+      }
+
+      // Liage des parametres
+      if (!$req->bind_param("sss", $productname, $productsmalldesc, $productdescription)) {
+        // Gestion des erreurs
+        $errors['liage'] = "Erreur de liage des parametres";
+      }
+      
+      // execution de la requete
+      if (!$req->execute()) {
+        // Gestion des erreurs
+        $errors['execution'] = "Erreur d'execution de la requete";
+      }
+      
+      // je récupere le dernier ID inseré pour fais les insert suivant avec la clef etrangére
+      $lastID = $req->insert_id;
+      
+
+
+      // **********************************************
+      // insertion des feature avec une boucle
+      $singlefeature = explode("-", $productfeature);
+
+      foreach ($singlefeature as $key) {
+
+        // seconde requete insertions dans la table caractéristique
+        // Preparationd de la requète
+        if (!$req = $dbconn->prepare("INSERT INTO features (feature, idx_product) VALUES (?, ?)")) {
+          // Gestion des erreurs
+          $errors['preparation'] = "Erreur de preparation de la requete";
+        }
+
+        // Liage des parametres
+        if (!$req->bind_param("ss", $key, $lastID)) {
+          // Gestion des erreurs
+          $errors['liage'] = "Erreur de liage des parametres";
+        }
+        
+        // execution de la requete
+        if (!$req->execute()) {
+          // Gestion des erreurs
+          $errors['execution'] = "Erreur d'execution de la requete";
+        }
+
+      }
+
+      // **********************************************
+      // insertion des connecteurs avec une boucle
+      $singleconnector = explode("-", $productconnect);
+
+      foreach ($singleconnector as $key) {
+
+        // seconde requete insertions dans la table caractéristique
+        // Preparationd de la requète
+        if (!$req = $dbconn->prepare("INSERT INTO connectors (connector, idx_product) VALUES (?, ?)")) {
+          // Gestion des erreurs
+          $errors['preparation'] = "Erreur de preparation de la requete";
+        }
+
+        // Liage des parametres
+        if (!$req->bind_param("ss", $key, $lastID)) {
+          // Gestion des erreurs
+          $errors['liage'] = "Erreur de liage des parametres";
+        }
+        
+        // execution de la requete
+        if (!$req->execute()) {
+          // Gestion des erreurs
+          $errors['execution'] = "Erreur d'execution de la requete";
+        }
+
+      }
+
+      // on redirige une fois le produit bien créé
+      header('Location: admin.php');
+
+    }
+
+  }
+
+
   require "../includes/header.php";
+
 ?>
 
 <div class="container">
@@ -31,99 +157,55 @@
 
   <div class="row">
     <div class="col-sm-12">
+      <!-- Si errors n'est pas vide on affiche alors les erreurs -->
+      <?php if(!empty($errors)): ?>
+
+        <div class="alert alert-warning" role="alert">
+
+          <!-- petite boucle pour afficher les erreurs ajoutées au tableau erreurs par php -->
+          <?php foreach ($errors as $key) : ?>
+
+            <p><?= $key ?></p>
+
+          <?php endforeach; ?>
+        
+        </div>
+        
+      <?php endif; ?>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-12">
       <form action="newproduct.php" method="post">
         <div class="form-group">
-          <label for="productname">Nom du produit</label>
-          <input type="text" class="form-control" id="productname" name="productname" aria-describedby="emailHelp" placeholder="Entrez le nom du produit">
+          <label for="productname">Nom du produit <small>max 250 caracteres</small></label>
+          <input type="text" class="form-control" id="productname" name="productname" aria-describedby="emailHelp" value="<?php if(isset($errors)){echo $productname;} ?>" placeholder="Entrez le nom du produit">
         </div>
         <div class="form-group">
           <label for="productsmalldesc">Le descriptif rapide du produit</label>
-          <textarea class="form-control" id="productsmalldesc" name="productsmalldesc" rows="5"></textarea>
+          <textarea class="form-control" id="productsmalldesc" name="productsmalldesc" rows="5"><?php if(isset($errors)){echo $productsmalldesc;} ?></textarea>
         </div>
         <div class="form-group">
           <label for="productdescription">Descriptif poussé et détaillé du produit</label>
-          <textarea class="form-control" id="productdescription" name="productdescription" rows="10"></textarea>
+          <textarea class="form-control" id="productdescription" name="productdescription" rows="10"><?php if(isset($errors)){echo $productdescription;} ?></textarea>
         </div>
         <div class="form-group">
           <label for="productfeature">Caractéristiques du produit <small>Séparez chaque caractéristiques par un -</small></label>
-          <textarea class="form-control" id="roductfeature" name="roductfeature" rows="5"></textarea>
+          <textarea class="form-control" id="productfeature" name="productfeature" rows="5"><?php if(isset($errors)){echo $productfeature;} ?></textarea>
         </div>
         <div class="form-group">
           <label for="productconnect">Connectique du produit <small>Séparez chaque connecteur par un -</small></label>
-          <textarea class="form-control" id="productconnect" name="productconnect" rows="5"></textarea>
-        </div>
-
-        <div class="form-group">
-          <label for="productname">Nom du produit</label>
-          <input type="text" class="form-control" id="productname" name="productname" aria-describedby="emailHelp" placeholder="Entrez le nom du produit">
-        </div>
-        <div class="form-group">
-          <label for="productname">Nom du produit</label>
-          <input type="text" class="form-control" id="productname" name="productname" aria-describedby="emailHelp" placeholder="Entrez le nom du produit">
+          <textarea class="form-control" id="productconnect" name="productconnect" rows="5"><?php if(isset($errors)){echo $productconnect;} ?></textarea>
         </div>
 
 
         <div class="form-group">
-          <label for="exampleInputPassword1">Password</label>
-          <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-        </div>
-        <div class="form-group">
-          <label for="exampleSelect1">Example select</label>
-          <select class="form-control" id="exampleSelect1">
-            <option>1</option>
-            <option>2</option>
-            <option>3</option>
-            <option>4</option>
-            <option>5</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label for="exampleSelect2">Example multiple select</label>
-          <select multiple class="form-control" id="exampleSelect2">
-            <option>1</option>
-            <option>2</option>
-            <option>3</option>
-            <option>4</option>
-            <option>5</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label for="exampleTextarea">Example textarea</label>
-          <textarea class="form-control" id="exampleTextarea" rows="3"></textarea>
-        </div>
-        <div class="form-group">
-          <label for="exampleInputFile">File input</label>
+          <label for="exampleInputFile">Images pour le produit</label>
           <input type="file" class="form-control-file" id="exampleInputFile" aria-describedby="fileHelp">
-          <small id="fileHelp" class="form-text text-muted">This is some placeholder block-level help text for the above input. It's a bit lighter and easily wraps to a new line.</small>
+          <small id="fileHelp" class="form-text text-muted">ICI un drag and drop si j'y arrive</small>
         </div>
-        <fieldset class="form-group">
-          <legend>Radio buttons</legend>
-          <div class="form-check">
-            <label class="form-check-label">
-              <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios1" value="option1" checked>
-              Option one is this and that&mdash;be sure to include why it's great
-            </label>
-          </div>
-          <div class="form-check">
-          <label class="form-check-label">
-              <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios2" value="option2">
-              Option two can be something else and selecting it will deselect option one
-            </label>
-          </div>
-          <div class="form-check disabled">
-          <label class="form-check-label">
-              <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios3" value="option3" disabled>
-              Option three is disabled
-            </label>
-          </div>
-        </fieldset>
-        <div class="form-check">
-          <label class="form-check-label">
-            <input type="checkbox" class="form-check-input">
-            Check me out
-          </label>
-        </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
+
+        <button type="submit" class="btn btn-primary btn-lg">Ajouter le produit</button>
       </form>
 
     </div>

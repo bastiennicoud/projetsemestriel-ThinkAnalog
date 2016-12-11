@@ -3,6 +3,25 @@
   //recuperation de la session
   require_once '../includes/verifiyconn.php';
 
+  // on recupere tous les produits de think analog pour les afficher plus bas
+  require_once '../includes/connectbd.php';
+  // première requete on inser les données du produit
+  // Preparationd de la requète
+  if (!$req = $dbconn->prepare("SELECT products.id_product, products.name, products.header, images.title, images.src FROM products INNER JOIN images ON products.id_product = images.idx_product")) {
+    // Gestion des erreurs
+    $errors['preparation'] = "Erreur de preparation de la requete";
+  }
+      
+  // execution de la requete
+  if (!$req->execute()) {
+    // Gestion des erreurs
+    $errors['execution'] = "Erreur d'execution de la requete";
+  }
+
+  // recuper le resultat et conversion en tableau
+  $res = $req->get_result();
+  $row = $res->fetch_all();
+
   require "../includes/header.php";
 ?>
 
@@ -30,17 +49,41 @@
     </div>
   </div>
 
+  <div class="row">
+    <div class="col-sm-12">
+      <!-- Si errors n'est pas vide on affiche alors les erreurs -->
+      <?php if(!empty($errors)): ?>
+
+        <div class="alert alert-warning" role="alert">
+
+          <!-- petite boucle pour afficher les erreurs ajoutées au tableau erreurs par php -->
+          <?php foreach ($errors as $key) : ?>
+
+            <p><?= $key ?></p>
+
+          <?php endforeach; ?>
+        
+        </div>
+        
+      <?php endif; ?>
+    </div>
+  </div>
+
   <div class="card-columns">
 
+    <?php foreach ($row as $key) : ?>
+
     <div class="card">
-      <img class="card-img-top img-fluid" src="../img/logo.svg" alt="Card image cap">
+      <img class="card-img-top img-fluid" src="../<?= $key[4]; ?>" alt="<?= $key[3]; ?>">
       <div class="card-block">
-        <h4 class="card-title">Nom produit</h4>
-        <p class="card-text">Bout de descriptif</p>
-        <button type="button" class="btn btn-primary">Edit</button>
-        <button type="button" class="btn btn-danger">Delete</button>
+        <h4 class="card-title"><?= $key[1]; ?></h4>
+        <p class="card-text"><?= $key[2]; ?></p>
+        <a class="btn btn-primary btn-info" href="edit.php?id=<?= $key[0]; ?>" role="button">EDIT</a>
+        <a class="btn btn-primary btn-danger" href="delete.php?id=<?= $key[0]; ?>" role="button">DELETE</a>
       </div>
     </div>
+
+    <?php endforeach; ?>
 
   </div>
 

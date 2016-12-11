@@ -24,6 +24,7 @@ footer{
   padding: 20px;
   border-radius: 10px;
   margin-top: 20%;
+  margin-bottom: 30%;
 }
 
 .a-logomgbottom {
@@ -46,4 +47,9 @@ footer{
 
 .a-first-row{
   margin-top: 30px;
+}
+
+.a-footerrow{
+  margin.top: 30px;
+  margin-bottom: 30px;
 }
