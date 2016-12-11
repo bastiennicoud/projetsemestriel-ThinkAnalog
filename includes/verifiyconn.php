@@ -17,6 +17,9 @@
     // si le cookie existe on le stoque
     $cookie = $_COOKIE['TAuserremember'];
 
+    // connexion a la bd
+    require_once 'connectbd.php';
+
     // pouis on fais une requete pour savoir si il existe dans la bd et qu'un stilisateur y correspond
     // Preparationd de la requète
     if (!$req = $dbconn->prepare("SELECT * FROM users WHERE remember_token = ?")) {
