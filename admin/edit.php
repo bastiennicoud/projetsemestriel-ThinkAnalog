@@ -161,7 +161,7 @@
     $row = $res->fetch_all();
 
 
-
+//xxxxxxxxxxxxxxxxxxxxxx
 
     if (!$req1 = $dbconn->prepare("SELECT features.feature FROM featatures WHERE features.idx_product=?")) {
       // Gestion des erreurs
