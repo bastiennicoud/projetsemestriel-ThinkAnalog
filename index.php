@@ -3,8 +3,6 @@
 
 <?php require "includes/headernav.php"; ?>
 
-  <header>
-    <img src="img/logo.svg" alt="Logo Think Analog">
-  </header>
+
 
 <?php require "includes/footer.php"; ?>

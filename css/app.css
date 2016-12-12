@@ -5,15 +5,134 @@
 
 @charset "utf-8";
 
-body{
+/* Chargement des polices */
+@font-face {
+    font-family: "HelveticaNeueLTSd Bd";
+    src: url(../fonts/HelveticaNeueLTStdBd.otf);
+}
+
+@font-face {
+    font-family: "HelveticaNeueLTSd Lt";
+    src: url(../fonts/HelveticaNeueLTStdLt.otf);
+}
+
+@font-face {
+    font-family: "HelveticaNeueLTSd Md";
+    src: url(../fonts/HelveticaNeueLTStdMd.otf);
+}
+
+@font-face {
+    font-family: "HelveticaNeueLTSd Th";
+    src: url(../fonts/HelveticaNeueLTStdTh.otf);
+}
+
+body {
+  height: 100%;
+  font-family: "HelveticaNeueLTSd Md", "Helvetica", "Arial", sans-serif;
+  background-color: #ecf0f1;
+}
+
+a {
+  text-decoration: none;
+  color: #ecf0f1;
+  transition-duration: 0.3s;
+}
+
+a:hover {
+  text-decoration: none;
+  color: #f83600 !important;
+}
+
+/****************************************************************/
+/* Navigation                                                   */
+/****************************************************************/
+
+.navbar {
+  height: 140px;
+  margin-bottom: 0px;
+  border-bottom: 0px;
+  background: #2c3e50; /* For browsers that do not support gradients */
+  background: -webkit-linear-gradient(#2c3e50, #34495e); /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient(#2c3e50, #34495e); /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient(#2c3e50, #34495e); /* For Firefox 3.6 to 15 */
+  background: linear-gradient(#2c3e50, #34495e); /* Standard syntax */
+}
+
+.navbar-default .navbar-nav>li>a {
+  color: #ecf0f1;
+}
+
+.navbar-height {
+  height: 140px;
+}
+
+@media (min-width: 768px) {
   
+  .navbar-nav {
+    padding-top: 86px;
+  }
+
 }
 
-footer{
+.navbar-collapse {
+  border-top: none;
+}
+
+@media (max-width: 767px) {
+
+  .navbar-link-big {
+    padding-top: 8px !important;
+    padding-bottom: 6px !important;
+    text-align: right;
+  }
 
 }
 
-/* Classes specifiques pour la partie admin du site */
+.navbar-link-big {
+  font-size: 20px;
+}
+
+.l-active {
+  color: #95a5a6 !important;
+}
+
+.navbar-collapse {
+  background: #2c3e50; /* For browsers that do not support gradients */
+  background: -webkit-linear-gradient(#2c3e50, #34495e); /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient(#2c3e50, #34495e); /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient(#2c3e50, #34495e); /* For Firefox 3.6 to 15 */
+  background: linear-gradient(#2c3e50, #34495e); /* Standard syntax */
+}
+
+.navbar-toggle {
+  margin-top: 82px;
+  transition-duration: 0.3s;
+}
+
+.navbar-brand-img{
+  height: 70px;
+}
+
+.navbar-brand {
+  padding: 20px;
+  padding-top: 60px;
+}
+
+@media (max-width: 767px) {
+
+  .navbar-brand-img{
+    height: 50px;
+  }
+
+  .navbar-brand{
+    padding-top: 74px;
+  }
+
+}
+
+/****************************************************************/
+/* Classes specifiques pour la partie admin du site             */
+/****************************************************************/
 
 .a-bgcolor {
   background: #ecf0f1;

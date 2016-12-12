@@ -92,7 +92,7 @@
       <div class="card-block">
         <h4 class="card-title"><?= $key[1]; ?></h4>
         <p class="card-text"><?= $key[2]; ?></p>
-        <a class="btn btn-primary btn-info" href="edit.php?id=<?= $key[0]; ?>" role="button">EDIT</a>
+        <a class="btn btn-primary btn-info disabled" href="edit.php?id=<?= $key[0]; ?>" role="button" aria-disabled="true">EDIT</a>
         <a class="btn btn-primary btn-danger" href="delete.php?id=<?= $key[0]; ?>" role="button">DELETE</a>
       </div>
     </div>
