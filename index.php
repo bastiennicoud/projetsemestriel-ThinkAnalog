@@ -25,11 +25,11 @@
     </div>
   </section>
 
-<div class="container">
+<section id="welcome">
 
-  <section id="welcome">
+  <div class="container">
 
-    <div class="row">
+    <div class="row padding-20">
       <div class="col-sm-8 col-sm-offset-2">
         <div class="media">
           <div class="media-left">
@@ -38,14 +38,14 @@
           <div class="media-body">
             <h4 class="media-heading">Bienvenue</h4>
             <p>
-              Bienvenue sur Think Analog
+              Think Analog fabrique et dévellope des apareils de traitement du signal audio de grandes qualité. Découvrez nos valeurs et nos produits.
             </p>
           </div>
         </div>
       </div>
     </div>
 
-    <div class="row">
+    <div class="row padding-20">
       <div class="col-sm-8 col-sm-offset-2">
         <div class="media">
           <div class="media-left">
@@ -54,14 +54,14 @@
           <div class="media-body">
             <h4 class="media-heading">Nos produits</h4>
             <p>
-              Bienvenue sur Think Analog
+              Tous les appareils Think Analog sont modernes et design, mais leur son est chaleureux et coloré. La grande qualité de l'électronique vous garantit un fiablité a tout épreuve ainsi qu'une qualité de signal idéale.
             </p>
           </div>
         </div>
       </div>
     </div>
     
-    <div class="row">
+    <div class="row padding-20">
       <div class="col-sm-8 col-sm-offset-2">
         <div class="media">
           <div class="media-left">
@@ -70,14 +70,14 @@
           <div class="media-body">
             <h4 class="media-heading">Nos valeurs</h4>
             <p>
-              Bienvenue sur Think Analog
+              Tous les appareils think analog sont fabriqués main, dans nos ateliers a Saint-Croix en Suisse. Chaque produit et crée de A à Z dans nos ateliers, toutes les etapes de la fabrication sont acomplies avec le plus grand soin.
             </p>
           </div>
         </div>
       </div>
     </div>
     
-    <div class="row">
+    <div class="row padding-20">
       <div class="col-sm-8 col-sm-offset-2">
         <div class="media">
           <div class="media-left">
@@ -93,21 +93,120 @@
       </div>
     </div>
 
-  </section>
+  </div>
 
-  <section id="skills">
+</section>
+
+<section id="skills">
+
+  <div class="container">
+
     <div class="row">
+      <div class="col-sm-12">
+        <h3 class="text-center col-inverse">Nous nous diférencions par</h3>
+      </div>
+    </div>
+
+    <div class="row">
+
+      <div class="col-sm-4">
+        <div class="media">
+          <div class="media-left">
+              <img class="media-object" src="..." alt="logo">
+          </div>
+          <div class="media-body">
+            <p class="col-inverse">
+              Des produits au caractére et au son analogique modernes.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-sm-4">
+        <div class="media">
+          <div class="media-left">
+              <img class="media-object" src="..." alt="logo">
+          </div>
+          <div class="media-body">
+            <p class="col-inverse">
+              Des materiaux de qualité, un traitement rigoureux des composants.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-sm-4">
+        <div class="media">
+          <div class="media-left">
+              <img class="media-object" src="..." alt="logo">
+          </div>
+          <div class="media-body">
+            <p class="col-inverse">
+              Une fabrication main meticuleuse, par des proffesionnels passionés.
+            </p>
+          </div>
+        </div>
+      </div>
       
     </div>
-  </section>
 
-  <section id="team">
+  </div>
+
+</section>
+
+<section id="team">
+
+  <div class="container">
+
     <div class="row">
-      
+      <div class="col-sm-12">
+        <h3 class="text-center">Nous nous diférencions par</h3>
+      </div>
     </div>
-  </section>
 
-</div>
+    <div class="row">
+
+      <div class="col-sm-4">
+        <div class="team-img">
+          <img src="tralala">
+        </div>
+        <div class="team-name">
+          <h5>La personne</h5>
+        </div>
+        <div class="tam-description">
+          <p>Une petite description</p>
+        </div>
+      </div>
+
+      <div class="col-sm-4">
+        <div class="team-img">
+          <img src="tralala">
+        </div>
+        <div class="team-name">
+          <h5>La personne</h5>
+        </div>
+        <div class="tam-description">
+          <p>Une petite description</p>
+        </div>
+      </div>
+
+      <div class="col-sm-4">
+        <div class="team-img">
+          <img src="tralala">
+        </div>
+        <div class="team-name">
+          <h5>La personne</h5>
+        </div>
+        <div class="tam-description">
+          <p>Une petite description</p>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+      
+</section>
 
 <!-- appel du footer -->
 <?php require "includes/footer.php"; ?>
