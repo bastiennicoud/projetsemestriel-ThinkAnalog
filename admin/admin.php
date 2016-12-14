@@ -1,12 +1,18 @@
 <?php
 
+  // *******************************************************************************
+  // Page principale de l'administration du site - affiche les produits
+  // *******************************************************************************
+
+
   //recuperation de la session
   require_once '../includes/verifiyconn.php';
 
-  // on recupere tous les produits de think analog pour les afficher plus bas
+
+  // connexion a la base de données
   require_once '../includes/connectbd.php';
-  // première requete on inser les données du produit
-  // Preparationd de la requète
+
+  // on recupere tous les produits de think analog pour les afficher plus bas
   if (!$req = $dbconn->prepare("SELECT products.id_product, products.name, products.header, images.title, images.src FROM products INNER JOIN images ON products.id_product = images.idx_product")) {
     // Gestion des erreurs
     $errors['preparation'] = "Erreur de preparation de la requete";
@@ -22,6 +28,7 @@
   $res = $req->get_result();
   $row = $res->fetch_all();
 
+  // appel du header
   require "../includes/header.php";
 ?>
 
@@ -44,7 +51,7 @@
         <a class="nav-link active color-dark" href="admin.php">Produits</a>
         <a class="nav-link active color-dark" href="newproduct.php">Nouveau produit</a>
         <a class="nav-link color-dark" href="disconnect.php">Deconnexion</a>
-        <a class="nav-link color-dark" href="../index.php">Acceuil Think Analog</a>
+        <a class="nav-link color-dark" href="../index.php">Accueil Think Analog</a>
       </nav>
       <hr>
     </div>
@@ -93,7 +100,7 @@
       <div class="card-block">
         <h4 class="card-title"><?= $key[1]; ?></h4>
         <p class="card-text"><?= $key[2]; ?></p>
-        <a class="btn btn-primary btn-info disabled" href="edit.php?id=<?= $key[0]; ?>" role="button" aria-disabled="true">EDIT</a>
+        <!-- <a class="btn btn-primary btn-info disabled" href="edit.php?id=<?= $key[0]; ?>" role="button" aria-disabled="true">EDIT</a> -->
         <a class="btn btn-primary btn-danger" href="delete.php?id=<?= $key[0]; ?>" role="button">DELETE</a>
       </div>
     </div>
