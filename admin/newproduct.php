@@ -1,10 +1,13 @@
 <?php
 
+  // *******************************************************************************
+  // Page pour l'ajout de produit
+  // *******************************************************************************
+
   //recuperation de la session
   require_once '../includes/verifiyconn.php';
 
-  // ajout du produit dans la bd
-  // on passe dans le script si l'utilisateur a remplis le formulaire
+  // si l'utilisateur a renseigné le premier champ on passe dans le script d'ajout
   if ($_POST['productname']) {
     
     // verification que les champs sont pleins (pas besoin de verifier le premier vu qu'on passe dans condition si il est rempli)
@@ -67,7 +70,7 @@
         $errors['execution'] = "Erreur d'execution de la requete";
       }
       
-      // je récupere le dernier ID inseré pour fais les insert suivant avec la clef etrangére
+      // je récupere le dernier ID inseré pour faire les insert suivant avec la clef etrangére
       $lastID = $req->insert_id;
       
 
@@ -75,6 +78,8 @@
 
       // **********************************************
       // insertion des feature avec une boucle
+
+      // je separe la chaine pour isoler chaques chaines entre les -
       $singlefeature = explode("-", $productfeature);
 
       foreach ($singlefeature as $key) {
@@ -105,11 +110,13 @@
 
       // **********************************************
       // insertion des connecteurs avec une boucle
+
+      // je separe la chaine pour isoler chaques chaines entre les -
       $singleconnector = explode("-", $productconnect);
 
       foreach ($singleconnector as $key) {
 
-        // seconde requete insertions dans la table caractéristique
+        // troisième requete insertions dans la table connecteurs
         // Preparationd de la requète
         if (!$req = $dbconn->prepare("INSERT INTO connectors (connector, idx_product) VALUES (?, ?)")) {
           // Gestion des erreurs
@@ -158,15 +165,17 @@
 
 
 
-      // on redirige une fois le produit bien créé
+      // message dans la session pour informer que le produit a bien été ajouté
       $_SESSION['flash'] = "Le produit a bien eté créé";
+
+      // on redirige une fois le produit bien créé
       header('Location: admin.php');
 
     }
 
   }
 
-
+  // appel du header
   require "../includes/header.php";
 
 ?>
