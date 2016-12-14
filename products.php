@@ -59,31 +59,31 @@
             </div>
             <div class="radio">
               <label>
-                <input type="radio" name="optionsRadios" id="optionsRadios1" value="comp">
+                <input type="radio" name="optionsRadios" id="optionsRadios1" value="Compresseur">
                 Compresseurs
               </label>
             </div>
             <div class="radio">
               <label>
-                <input type="radio" name="optionsRadios" id="optionsRadios2" value="preamp">
+                <input type="radio" name="optionsRadios" id="optionsRadios2" value="Préamplificateur">
                 Preamplificateur
               </label>
             </div>
             <div class="radio">
               <label>
-                <input type="radio" name="optionsRadios" id="optionsRadios2" value="di">
+                <input type="radio" name="optionsRadios" id="optionsRadios2" value="Direct Box">
                 Direct Box
               </label>
             </div>
             <div class="radio">
               <label>
-                <input type="radio" name="optionsRadios" id="optionsRadios2" value="mic">
+                <input type="radio" name="optionsRadios" id="optionsRadios2" value="Microphone">
                 Microphone
               </label>
             </div>
             <div class="radio">
               <label>
-                <input type="radio" name="optionsRadios" id="optionsRadios2" value="other">
+                <input type="radio" name="optionsRadios" id="optionsRadios2" value="Autre">
                 Autre
               </label>
             </div>

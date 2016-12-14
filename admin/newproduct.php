@@ -239,11 +239,11 @@
         <div class="form-group">
           <label for="productcategory">Categorie du produit</label>
           <select class="form-control" name="productcategory" id="productcategory">
-            <option value="comp">Compresseur</option>
-            <option value="preamp">Préamplificateur</option>
-            <option value="di">Direct Box</option>
-            <option value="mic">Microphone</option>
-            <option value="other">Autre</option>
+            <option value="Compresseur">Compresseur</option>
+            <option value="Préamplificateur">Préamplificateur</option>
+            <option value="Direct Box">Direct Box</option>
+            <option value="Microphone">Microphone</option>
+            <option value="Autre">Autre</option>
           </select>
         </div>
 
