@@ -1,6 +1,8 @@
 <?php
 
   // destruction de la session
+  session_start();
+  session_unset();
   session_destroy();
   // destruction du cookie
   setcookie('TAuserremember', NULL, -1);

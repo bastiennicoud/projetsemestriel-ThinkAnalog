@@ -44,6 +44,7 @@
         <a class="nav-link active color-dark" href="admin.php">Produits</a>
         <a class="nav-link active color-dark" href="newproduct.php">Nouveau produit</a>
         <a class="nav-link color-dark" href="disconnect.php">Deconnexion</a>
+        <a class="nav-link color-dark" href="../index.php">Acceuil Think Analog</a>
       </nav>
       <hr>
     </div>

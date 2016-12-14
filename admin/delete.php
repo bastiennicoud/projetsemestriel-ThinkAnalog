@@ -1,6 +1,6 @@
 <?php
 
-  // j'inclus le verify conn pour exiter que nimporte qui puisse acceder a ce script
+  // j'inclus le verify conn pour eviter que nimporte qui puisse acceder a ce script
   require_once '../includes/verifiyconn.php';
 
   if($_GET['id']) {

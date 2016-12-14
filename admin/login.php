@@ -110,12 +110,12 @@
 
 <div class="container-fluid a-containerbackground">
 
-  <a href="../index.php" class="a-asize text-xs-right">Acceuil Think Analog</a>
+  <a href="../index.php" class="a-asize text-xs-right color-dark">Acceuil Think Analog</a>
 
   <div class="a-loginbox col-md-4 offset-md-4">
 
     <img src="../img/logo.svg" alt="Logo Think Analog" class="col-xs-10 offset-xs-1 a-logomgbottom">
-    <h4 class="text-xs-center">Connectez-vous</h3>
+    <h3 class="text-xs-center">Connectez-vous</h3>
 
     <!-- Si errors n'est pas vide on affiche alors les erreurs -->
     <?php if(!empty($errors)): ?>
