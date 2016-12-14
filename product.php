@@ -45,6 +45,16 @@
     $res = $req->get_result();
     $row = $res->fetch_all();
 
+    // ici je passe les caractéristiques dans le nom des clef d'un tableau pour supprimer les doublons 
+    foreach ($row as $key) {
+      $filtredfeature[$key[7]] = 1;
+    }
+
+    // ici je passe les connecteurs dans le nom des clef d'un tableau pour supprimer les doublons 
+    foreach ($row as $key) {
+      $filtredconnectors[$key[8]] = 1;
+    }
+
   } else {
 
     // si il ny a pas d'id dans le GET on redirige vers la page qui affiche tous les produits
@@ -77,7 +87,7 @@
       </div>
     </div>
 
-    <div class="row section-first">
+    <div class="row section-last section-first">
 
       <div class="col-sm-8">
         <p class="product-header"><?php echo htmlspecialchars($row[0][2]) ?></p>
@@ -88,16 +98,16 @@
 
         <h4>Caractéristiques</h4>
         <ul>
-          <?php foreach ($row as $key): ?>
-            <li><?php echo htmlspecialchars($key[7]) ?></li>
-          <?php endforeach ?>
+          <?php foreach ($filtredfeature as $key => $values): ?>
+            <li><?php echo htmlspecialchars($key) ?></li>
+          <?php endforeach; ?>
         </ul>
 
         <h4>Connectiques</h4>
         <ul>
-          <?php foreach ($row as $key): ?>
-            <li><?php echo htmlspecialchars($key[8]) ?></li>
-          <?php endforeach ?>
+          <?php foreach ($filtredconnectors as $key => $values): ?>
+            <li><?php echo htmlspecialchars($key) ?></li>
+          <?php endforeach; ?>
         </ul>
 
       </div>

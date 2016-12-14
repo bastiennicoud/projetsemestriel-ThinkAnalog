@@ -22,6 +22,24 @@
     // initialisation tableau pour les erreurs
     $errors = array();
 
+    // tests sur l'image a recuperer
+    if ($_FILES['productimage']['error']) {
+      $errors['imageupload'] = "Un erreur lors du chargement de l'image c'est produite";
+    }
+    if ($_FILES['productimage']['size'] > 1048576) {
+      $errors['imageupload'] = "Le fichier est trop volumineux, il depasse 1 mo";
+    }
+    $validformat = "jpg";
+    // strtolower convertit en minuscules, substr enleve le premier caractere, strrchr renvoie l'extension et son .
+    $uploadedformat = strtolower(substr(strrchr($_FILES['productimage']['name'], '.'),1));
+    if ($uploadedformat != $validformat) {
+      $errors['imageformat'] = "Le format de fichier n'est pas valide";
+    }
+    $uploadeddimensions = getimagesize($_FILES['productimage']['tmp_name']);
+    if ($uploadeddimensions[0] != 1920 AND $uploadeddimensions[1] != 480) {
+      $errors['imagesize'] = "L'image ne respecte pas les dimensions";
+    }
+
     // ecriture des erreurs si un champ na pas ete renseigné ou nom trop long
     if (strlen($productname) > 250) {
       $errors['productname'] = "Le nom du produit est trop long";
@@ -224,7 +242,7 @@
   </div>
   <div class="row">
     <div class="col-sm-12">
-      <form action="newproduct.php" method="post">
+      <form action="newproduct.php" method="post" enctype="multipart/form-data">
         <div class="form-group">
           <label for="productname">Nom du produit <small>max 250 caracteres</small></label>
           <input type="text" class="form-control" id="productname" name="productname" aria-describedby="emailHelp" value="<?php if(isset($errors)){echo $productname;} ?>" placeholder="Entrez le nom du produit">
@@ -258,9 +276,9 @@
 
 
         <div class="form-group">
-          <label for="exampleInputFile">Images pour le produit</label>
-          <input type="file" class="form-control-file" id="exampleInputFile" aria-describedby="fileHelp">
-          <small id="fileHelp" class="form-text text-muted">ICI un drag and drop si j'y arrive</small>
+          <label for="productimage">Images pour le produit</label>
+          <input type="file" class="form-control-file" id="productimage" name="productimage" aria-describedby="fileHelp">
+          <small id="fileHelp" class="form-text text-muted">Maximum 1mo, seulement des fichiers .jpg, Taille 1920 par 480</small>
         </div>
 
         <button type="submit" class="btn btn-primary btn-lg">Ajouter le produit</button>

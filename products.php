@@ -93,19 +93,19 @@
             <div class="radio">
               <label>
                 <input type="radio" name="optionsRadios" id="optionsRadios2" value="Préamplificateur">
-                Preamplificateur
+                Preamplificateurs
               </label>
             </div>
             <div class="radio">
               <label>
                 <input type="radio" name="optionsRadios" id="optionsRadios2" value="Direct Box">
-                Direct Box
+                Direct Boxes
               </label>
             </div>
             <div class="radio">
               <label>
                 <input type="radio" name="optionsRadios" id="optionsRadios2" value="Microphone">
-                Microphone
+                Microphones
               </label>
             </div>
             <div class="radio">
@@ -132,11 +132,13 @@
 
           <div class="thumbnail">
             <div class="row">
-              <div class="col-sm-4">
+
+              <div class="col-sm-4 product-img-small">
                 <a href="product.php?productid=<?= $key[0] ?>">
-                  <img src="<?= $key[4] ?>" title="<?= $key[3] ?>" width="100%">
+                  <img src="<?= $key[4] ?>" title="<?= $key[3] ?>">
                 </a>
               </div>
+
               <div class="col-sm-8">
                 <a href="product.php?productid=<?= $key[0] ?>">
                   <h4><?= $key[1] ?></h4>
@@ -144,6 +146,7 @@
                 <h4><small><?= $key[5] ?></small></h4>
                 <p><?= $key[2] ?></p>
               </div>
+
             </div>
           </div>
 

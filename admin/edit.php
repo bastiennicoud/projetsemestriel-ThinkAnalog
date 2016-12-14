@@ -143,13 +143,22 @@
 
   } else {
 
+    // si on a passé un id par GET c'est que l'on veut obtenir les infos du produt pour modification
     $productID = $_GET['id'];
 
     // connexion a la bd
     require_once "../includes/connectbd.php";
 
     // requete preparee
-    if (!$req = $dbconn->prepare("SELECT products.id_product, products.name, products.header, products.description FROM products WHERE products.id_product=?")) {
+    if (!$req = $dbconn->prepare("
+                                  SELECT products.id_product, products.name, products.header, products.description, images.title, images.src, categorys.category, features.feature, connectors.connector
+                                  FROM products
+                                  INNER JOIN images ON products.id_product=images.idx_product
+                                  INNER JOIN categorys ON products.id_product=categorys.idx_product
+                                  INNER JOIN features ON products.id_product=features.idx_product
+                                  INNER JOIN connectors ON products.id_product=connectors.idx_product
+                                  WHERE products.id_product=?
+                                  ")) {
       // Gestion des erreurs
       $errors['preparation'] = "Erreur de preparation de la requete";
     }
@@ -170,31 +179,15 @@
     $res = $req->get_result();
     $row = $res->fetch_all();
 
-
-//xxxxxxxxxxxxxxxxxxxxxx
-
-    if (!$req1 = $dbconn->prepare("SELECT features.feature FROM featatures WHERE features.idx_product=?")) {
-      // Gestion des erreurs
-      $errors['preparation'] = "Erreur de preparation de la requete";
+    // ici je passe les caractéristiques dans le nom des clef d'un tableau pour supprimer les doublons 
+    foreach ($row as $key) {
+      $filtredfeature[$key[7]] = 1;
     }
 
-    // Liage des parametres
-    if (!$req1->bind_param("i", $productID)) {
-      // Gestion des erreurs
-      echo "Erreur de liage des parametres";
+    // ici je passe les connecteurs dans le nom des clef d'un tableau pour supprimer les doublons 
+    foreach ($row as $key) {
+      $filtredconnectors[$key[8]] = 1;
     }
-echo "tutu";
-    // execution de la requete
-    if (!$req1->execute()) {
-      // Gestion des erreurs
-      $errors['execution'] = "Erreur d'execution de la requete";
-    }
-
-    // recuper le resultat et conversion en tableau
-    $res1 = $req1->get_result();
-    $rowfeat = $res1->fetch_all();
-
-
 
   }
 
@@ -228,6 +221,7 @@ echo "tutu";
 
   <div class="row">
     <div class="col-sm-12">
+
       <!-- Si errors n'est pas vide on affiche alors les erreurs -->
       <?php if(!empty($errors)): ?>
 
@@ -243,6 +237,7 @@ echo "tutu";
         </div>
         
       <?php endif; ?>
+
     </div>
   </div>
   <div class="row">
@@ -267,21 +262,33 @@ echo "tutu";
         <div class="form-group">
           <label for="productfeature">Caractéristiques du produit <small>Séparez chaque caractéristiques par un -</small></label>
           <textarea class="form-control" id="productfeature" name="productfeature" rows="5">
-            <?php
-              foreach ($rowfeat as $key) {
-                $featurestrait = $featurestrait . $key[0] . "-";
-              }
-              $affiche = trim($featurestrait);
-              echo $affiche;
-            ?>
+            <?php foreach ($filtredfeature as $key => $values): ?>
+              <?php echo $key . "-" ?>
+            <?php endforeach; ?>
           </textarea>
+          <?php foreach ($filtredfeature as $key => $values): ?>
+              <?php echo $key . "-" ?>
+            <?php endforeach; ?>
         </div>
         <div class="form-group">
           <label for="productconnect">Connectique du produit <small>Séparez chaque connecteur par un -</small></label>
           <textarea class="form-control" id="productconnect" name="productconnect" rows="5">
-            
+            <?php foreach ($filtredconnectors as $key => $values): ?>
+              <?php echo htmlspecialchars($key) . "-" ?>
+            <?php endforeach; ?>
           </textarea>
         </div>
+        <div class="form-group">
+          <label for="productcategory">Categorie du produit</label>
+          <select class="form-control" name="productcategory" id="productcategory">
+            <option value="Compresseur">Compresseur</option>
+            <option value="Préamplificateur">Préamplificateur</option>
+            <option value="Direct Box">Direct Box</option>
+            <option value="Microphone">Microphone</option>
+            <option value="Autre">Autre</option>
+          </select>
+        </div>
+
 
 
         <div class="form-group">
