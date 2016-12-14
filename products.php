@@ -10,7 +10,7 @@
   // requete pour recuperer tous les produits
   // Preparation de la requète
   if (!$req = $dbconn->prepare("
-                                SELECT products.name, products.header, images.title, images.src, categorys.category
+                                SELECT products.id_product, products.name, products.header, images.title, images.src, categorys.category
                                 FROM products
                                 INNER JOIN images ON products.id_product=images.idx_product
                                 INNER JOIN categorys ON products.id_product=categorys.idx_product
@@ -106,12 +106,16 @@
           <div class="thumbnail">
             <div class="row">
               <div class="col-sm-4">
-                <img src="<?= $key[3] ?>" title="<?= $key[2] ?>" width="100%">
+                <a href="product.php?productid=<?= $key[0] ?>">
+                  <img src="<?= $key[4] ?>" title="<?= $key[3] ?>" width="100%">
+                </a>
               </div>
               <div class="col-sm-8">
-                <h4><?= $key[0] ?></h4>
-                <h4><small><?= $key[4] ?></small></h4>
-                <p><?= $key[1] ?></p>
+                <a href="product.php?productid=<?= $key[0] ?>">
+                  <h4><?= $key[1] ?></h4>
+                </a>
+                <h4><small><?= $key[5] ?></small></h4>
+                <p><?= $key[2] ?></p>
               </div>
             </div>
           </div>
