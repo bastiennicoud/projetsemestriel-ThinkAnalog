@@ -10,21 +10,23 @@
   // si l'utilisateur a renseigné le premier champ on passe dans le script d'ajout
   if ($_POST['productname']) {
     
-    // verification que les champs sont pleins (pas besoin de verifier le premier vu qu'on passe dans condition si il est rempli)
-    // recuperation des champs htmlspecialchars comme ça c'est fait
-    $productname        = htmlspecialchars($_POST['productname']);
-    $productsmalldesc   = htmlspecialchars($_POST['productsmalldesc']);
-    $productdescription = htmlspecialchars($_POST['productdescription']);
-    $productfeature     = htmlspecialchars($_POST['productfeature']);
-    $productconnect     = htmlspecialchars($_POST['productconnect']);
-    $productcategory    = htmlspecialchars($_POST['productcategory']);
 
     // initialisation tableau pour les erreurs
     $errors = array();
 
+    // verification que les champs sont pleins (pas besoin de verifier le premier vu qu'on passe dans condition si il est rempli)
+    // recuperation des champs htmlspecialchars comme ça c'est fait
+    $productname           = htmlspecialchars($_POST['productname']);
+    $productsmalldesc      = htmlspecialchars($_POST['productsmalldesc']);
+    $productdescription    = htmlspecialchars($_POST['productdescription']);
+    $productfeature        = htmlspecialchars($_POST['productfeature']);
+    $productconnect        = htmlspecialchars($_POST['productconnect']);
+    $productcategory       = htmlspecialchars($_POST['productcategory']);
+    $productimgdescription = htmlspecialchars($_POST['productimgdescription']);
+
     // tests sur l'image a recuperer
     if ($_FILES['productimage']['error']) {
-      $errors['imageupload'] = "Un erreur lors du chargement de l'image c'est produite";
+      $errors['imageupload'] = "Un erreur lors de l'upload de l'image c'est produite";
     }
     if ($_FILES['productimage']['size'] > 1048576) {
       $errors['imageupload'] = "Le fichier est trop volumineux, il depasse 1 mo";
@@ -40,7 +42,7 @@
       $errors['imagesize'] = "L'image ne respecte pas les dimensions";
     }
 
-    // ecriture des erreurs si un champ na pas ete renseigné ou nom trop long
+    // test si les champs sont renseignés
     if (strlen($productname) > 250) {
       $errors['productname'] = "Le nom du produit est trop long";
     }
@@ -55,6 +57,12 @@
     }
     if ($productconnect == "") {
       $errors['productconnect'] = "Vous n'avez pas rentré de connectique pour le produit.";
+    }
+    if ($productimgdescription == "") {
+      $errors['productimgdescription'] = "Vous n'avez pas rentré de description pour l'image";
+    }
+    if (strlen($productimgdescription) > 250) {
+      $errors['productimgdescriptionlength'] = "La description de l'image est trop longue";
     }
 
 
@@ -183,11 +191,48 @@
 
 
 
-      // message dans la session pour informer que le produit a bien été ajouté
-      $_SESSION['flash'] = "Le produit a bien eté créé";
+      // **********************************************
+      // insertion de l'ur de limage et copie de l'mage dans le bon doosier
 
-      // on redirige une fois le produit bien créé
-      header('Location: admin.php');
+      // creation d'un nom pour l'image
+      $imagename = "product" . $lastID . "." . $uploadedformat;
+      // emplacement
+      $imagedirectory = "img/products/" . $imagename;
+
+      // je deplace le ficher dans le dossier voulu a ce effet
+      $imgmove = move_uploaded_file($_FILES['productimage']['tmp_name'], "../" . $imagedirectory);
+      if (!$imgmove) {
+        $errors['deplacementimage'] = "Erreur lors du deplacement de l'image.";
+      }
+
+      // Ajout du lien de l'image dans la bd
+      if (!$req = $dbconn->prepare("INSERT INTO images (title, src, idx_product) VALUES (?, ?, ?)")) {
+        // Gestion des erreurs
+        $errors['preparation'] = "Erreur de preparation de la requete";
+      }
+
+      // Liage des parametres
+      if (!$req->bind_param("ssi", $productimgdescription, $imagedirectory, $lastID)) {
+        // Gestion des erreurs
+        $errors['liage'] = "Erreur de liage des parametres";
+      }
+        
+      // execution de la requete
+      if (!$req->execute()) {
+        // Gestion des erreurs
+        $errors['execution'] = "Erreur d'execution de la requete";
+      }
+
+
+      if (empty($errors)) {
+
+        // message dans la session pour informer que le produit a bien été ajouté
+        $_SESSION['flash'] = "Le produit a bien eté créé";
+
+        // on redirige une fois le produit bien créé
+        header('Location: admin.php');
+
+      }
 
     }
 
@@ -278,7 +323,11 @@
         <div class="form-group">
           <label for="productimage">Images pour le produit</label>
           <input type="file" class="form-control-file" id="productimage" name="productimage" aria-describedby="fileHelp">
-          <small id="fileHelp" class="form-text text-muted">Maximum 1mo, seulement des fichiers .jpg, Taille 1920 par 480</small>
+          <small id="fileHelp" class="form-text text-muted">Maximum 1mo, seulement des fichiers .jpg, Taille 1920 par 480px</small>
+        </div>
+        <div class="form-group section-last">
+          <label for="productimgdescription">Descriptif image <small>max 250 caracteres</small></label>
+          <input type="text" class="form-control" id="productimgdescription" name="productimgdescription" aria-describedby="emailHelp" value="<?php if(isset($errors)){echo $productimgdescription;} ?>" placeholder="Entrez le nom du produit">
         </div>
 
         <button type="submit" class="btn btn-primary btn-lg">Ajouter le produit</button>
