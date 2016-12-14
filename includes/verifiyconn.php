@@ -1,11 +1,15 @@
 <?php
 
-  // script pour verifier que l'utilisateur est bien connecté ou que le cookie de rester conecter soit la
+  // *******************************************************************************
+  // Script de verification que l'utilisateru est connecté
+  // a ajouter au début de toutes les pages d'administration du site
+  // afin d'eviter que quelqun accede a celles ci
+  // *******************************************************************************
 
   // initialisation des session
   session_start();
 
-  // si une session existe on recupere 2-3 valeurs
+  // si une session existe on recupere l'id et le nom d'utilisateur pour une eventuelle utilisation
   if ($_SESSION) {
     
     $userID = $_SESSION['userID'];
@@ -20,7 +24,7 @@
     // connexion a la bd
     require_once 'connectbd.php';
 
-    // pouis on fais une requete pour savoir si il existe dans la bd et qu'un stilisateur y correspond
+    // pouis on fais une requete pour savoir si il existe dans la bd et qu'un utilisateur y correspond
     // Preparationd de la requète
     if (!$req = $dbconn->prepare("SELECT * FROM users WHERE remember_token = ?")) {
       // Gestion des erreurs
@@ -44,11 +48,11 @@
     $row = $res->fetch_assoc();
     
 
-    if (isset($row['id_user'])) {
+    if (isset($row[0])) {
       
       // si il existe bien un utilisateur on reinjecte ses informations dans la session
-      $_SESSION['userID'] = $row['id_user'];
-      $_SESSION['userName'] = $row['username'];
+      $_SESSION['userID'] = $row[0];
+      $_SESSION['userName'] = $row[1];
 
     } else {
 

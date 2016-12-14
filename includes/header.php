@@ -1,5 +1,4 @@
-<!-- Bastien Nicoud - Think Analog -->
-<!-- Projet semestriel - novembre 2016 -->
+<!-- HEADER sans navigation destiné au pages du site administratif -->
 
 <!doctype html>
 <html>

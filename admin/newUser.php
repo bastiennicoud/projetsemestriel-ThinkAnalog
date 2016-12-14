@@ -1,8 +1,14 @@
 <?php
 
-  // Juste un petit script pour créer les utilisateurs et les hash du mdp
-  // Ne pas mettre en ligne se script -> grosse faile de securité
+  // *******************************************************************************
+  // Ajout d'utilisateur
+  // ATTENTION
+  // Ce script ne doit etre accesible uniquement pas l'administrateur du site web
+  // NE PAS METTRE CE SCRIPT EN LIGNE
+  // *******************************************************************************
 
+
+  // si les champ on ete renseigné pou passe a l'ajout
   if ($_POST['username'] && $_POST['password']) {
 
     // remplissage des variables username, hash du mdp, initialisation de la variable d'erreurs
@@ -13,28 +19,22 @@
     // connexion a la bd
     require_once '../includes/connectbd.php';
 
-    // Preparationd de la requète
+    // Preparationd de la requète d'insertion de l'utilisateur
     if (!$req = $dbconn->prepare("INSERT INTO users (`username`, `password`) VALUES (? , ?)")) {
-
       // Gestion des erreurs
       $errors['preparation'] = "Erreur de preparation de la requete";
-
     }
 
     // Liage des parametres
     if (!$req->bind_param("ss", $userName, $passhash)) {
-
       // Gestion des erreurs
       $errors['liage'] = "Erreur de liage des parametres";
-
     }
     
     // execution de la requete
     if (!$req->execute()) {
-
       // Gestion des erreurs
       $errors['execution'] = "Erreur d'execution de la requete";
-
     }
 
     // petit message pour l'utilisateur
@@ -56,6 +56,7 @@
 
 ?>
 
+<!-- Page simple avec deux champs pour l'ajout d'utilisateur -->
 <HTML>
   <head>
     <meta charset="utf-8" />

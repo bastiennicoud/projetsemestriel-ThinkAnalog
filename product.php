@@ -1,6 +1,8 @@
 <?php
 
-  // script pour l'affichage du produit spécifique
+  // *******************************************************************************
+  // Page d'affichage d'un produit specifique
+  // *******************************************************************************
 
   if (isset($_GET['productid'])) {
     

@@ -1,8 +1,12 @@
-<!-- Bastien Nicoud - Think Analog -->
-<!-- Projet semestriel - novembre 2016 -->
-
-<!-- Partie php pour récuperer les produits -->
 <?php
+
+  // *******************************************************************************
+  // Affichage des differents produits
+  // *******************************************************************************
+
+
+  // tableau pour les erreurs
+  $errors     = array();
 
   // connexion a la bd
   require_once "includes/connectbd.php";
@@ -39,6 +43,29 @@
 <section id="products">
 
   <div class="container">
+
+
+
+    <!-- Affichage des erreurs -->
+    <!-- Si errors n'est pas vide on affiche alors les erreurs -->
+    <?php if(!empty($errors)): ?>
+
+      <div class="alert alert-warning" role="alert">
+
+        <!-- petite boucle pour afficher les erreurs ajoutées au tableau erreurs par php -->
+        <?php foreach ($errors as $key) : ?>
+
+          <p><?= $key ?></p>
+
+        <?php endforeach; ?>
+      
+      </div>
+      
+    <?php endif; ?>
+
+
+
+
     <div class="row section-first">
 
       <!-- *************************************** -->

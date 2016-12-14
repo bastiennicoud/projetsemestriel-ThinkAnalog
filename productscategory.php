@@ -1,5 +1,9 @@
 <?php
 
+  // *******************************************************************************
+  // Script appelé par ajax si l'utilisateur filtre les produits par categories
+  // *******************************************************************************
+
   // script php pour renvoyer uniquement les produits de la categorie selectionée
 
   // je recupere la categorie que l'utilisateur a selectionner
