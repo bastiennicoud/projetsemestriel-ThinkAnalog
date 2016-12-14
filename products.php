@@ -104,12 +104,6 @@
             </div>
             <div class="radio">
               <label>
-                <input type="radio" name="optionsRadios" id="optionsRadios2" value="Microphone">
-                Microphones
-              </label>
-            </div>
-            <div class="radio">
-              <label>
                 <input type="radio" name="optionsRadios" id="optionsRadios2" value="Autre">
                 Autre
               </label>

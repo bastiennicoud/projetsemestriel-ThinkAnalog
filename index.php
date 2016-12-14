@@ -17,13 +17,19 @@
       <div id="slider-page-acceuil" class="carousel slide second-plan" data-ride="carousel">
         <div class="carousel-inner" role="listbox">
           <div class="item active">
-            <img src="img/slider/ok1.jpg" alt="lightning" class="width-maximum">
+            <img src="img/slider/slide1.jpg" alt="lightning" class="width-maximum">
           </div>
           <div class="item">
-            <img src="img/slider/ok4.jpg" alt="wp" class="width-maximum">
+            <img src="img/slider/slide2.jpg" alt="lightning" class="width-maximum">
           </div>
           <div class="item">
-            <img src="img/slider/ok6.jpg" alt="ma2" class="width-maximum">
+            <img src="img/slider/slide3.jpg" alt="lightning" class="width-maximum">
+          </div>
+          <div class="item">
+            <img src="img/slider/slide4.jpg" alt="lightning" class="width-maximum">
+          </div>
+          <div class="item">
+            <img src="img/slider/slide5.jpg" alt="lightning" class="width-maximum">
           </div>
         </div>
       </div>

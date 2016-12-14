@@ -31,4 +31,6 @@
 
 
 <!-- appel du footer -->
-<?php require "includes/footer.php"; ?>
+<?php
+$footercollant = true;
+require "includes/footer.php"; ?>

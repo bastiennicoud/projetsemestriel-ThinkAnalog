@@ -314,7 +314,6 @@
             <option value="Compresseur">Compresseur</option>
             <option value="Préamplificateur">Préamplificateur</option>
             <option value="Direct Box">Direct Box</option>
-            <option value="Microphone">Microphone</option>
             <option value="Autre">Autre</option>
           </select>
         </div>
