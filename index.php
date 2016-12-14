@@ -4,6 +4,13 @@
 <!-- appel du header avec la navigation -->
 <?php require "includes/headernav.php"; ?>
 
+
+
+
+<!-- ********************** -->
+<!-- SECTION 1 // le slider -->
+<!-- ********************** -->
+
   <section id="slider">
     <div class="row">
 
@@ -25,23 +32,23 @@
     </div>
   </section>
 
+
+
+
+<!-- *********************************** -->
+<!-- SECTION 2 // Accroche de bienvenues -->
+<!-- *********************************** -->
+
 <section id="welcome">
 
   <div class="container">
 
-    <div class="row padding-20">
-      <div class="col-sm-8 col-sm-offset-2">
-        <div class="media">
-          <div class="media-left">
-              <img class="media-object" src="..." alt="logo">
-          </div>
-          <div class="media-body">
-            <h4 class="media-heading">Bienvenue</h4>
-            <p>
-              Think Analog fabrique et dévellope des apareils de traitement du signal audio de grandes qualité. Découvrez nos valeurs et nos produits.
-            </p>
-          </div>
-        </div>
+    <div class="row padding- section-first">
+      <div class="col-sm-12">
+        <h3 class="text-center">Bienvenue</h3>
+        <p class="text-center">Think Analog fabrique et dévellope des apareils<br>
+        de traitement du signal audio de grandes qualité.<br>
+        Découvrez nos valeurs et nos produits.</p>
       </div>
     </div>
 
@@ -49,7 +56,7 @@
       <div class="col-sm-8 col-sm-offset-2">
         <div class="media">
           <div class="media-left">
-              <img class="media-object" src="..." alt="logo">
+            <img class="media-object" src="img/icons/nosproduits.svg" alt="logo" height="64px" width="64px">
           </div>
           <div class="media-body">
             <h4 class="media-heading">Nos produits</h4>
@@ -65,7 +72,7 @@
       <div class="col-sm-8 col-sm-offset-2">
         <div class="media">
           <div class="media-left">
-              <img class="media-object" src="..." alt="logo">
+            <img class="media-object" src="img/icons/nosvaleurs.svg" alt="logo" height="64px" width="64px">
           </div>
           <div class="media-body">
             <h4 class="media-heading">Nos valeurs</h4>
@@ -77,16 +84,16 @@
       </div>
     </div>
     
-    <div class="row padding-20">
+    <div class="row padding-20 section-last">
       <div class="col-sm-8 col-sm-offset-2">
         <div class="media">
           <div class="media-left">
-              <img class="media-object" src="..." alt="logo">
+            <img class="media-object" src="img/icons/qualite.svg" alt="logo" height="64px" width="64px">
           </div>
           <div class="media-body">
             <h4 class="media-heading">Qualité</h4>
             <p>
-              Bienvenue sur Think Analog
+              L'objectif principal de nos produits, vous offrir les elements de la meilleure qualité possible pour vos chaines d'enregistreemnt / mixage.<br> Nos produits sont fiables et résistants sur la durée.
             </p>
           </div>
         </div>
@@ -97,22 +104,29 @@
 
 </section>
 
+
+
+
+<!-- ********************************* -->
+<!-- SECTION 3 // Plus de l'entreprise -->
+<!-- ********************************* -->
+
 <section id="skills">
 
   <div class="container">
 
-    <div class="row">
+    <div class="row padding-20 section-first">
       <div class="col-sm-12">
         <h3 class="text-center col-inverse">Nous nous diférencions par</h3>
       </div>
     </div>
 
-    <div class="row">
+    <div class="row padding-20 section-last">
 
       <div class="col-sm-4">
         <div class="media">
           <div class="media-left">
-              <img class="media-object" src="..." alt="logo">
+            <img class="media-object" src="img/icons/product.svg" alt="logo" height="64px" width="64px">
           </div>
           <div class="media-body">
             <p class="col-inverse">
@@ -125,7 +139,7 @@
       <div class="col-sm-4">
         <div class="media">
           <div class="media-left">
-              <img class="media-object" src="..." alt="logo">
+            <img class="media-object" src="img/icons/materials.svg" alt="logo" height="64px" width="64px">
           </div>
           <div class="media-body">
             <p class="col-inverse">
@@ -138,7 +152,7 @@
       <div class="col-sm-4">
         <div class="media">
           <div class="media-left">
-              <img class="media-object" src="..." alt="logo">
+            <img class="media-object" src="img/icons/fabrication.svg" alt="logo" height="64px" width="64px">
           </div>
           <div class="media-body">
             <p class="col-inverse">
@@ -154,51 +168,70 @@
 
 </section>
 
+
+
+
+<!-- ******************************* -->
+<!-- SECTION 4 // Les collaborateurs -->
+<!-- ******************************* -->
+
 <section id="team">
 
   <div class="container">
 
-    <div class="row">
+    <div class="row padding-20 section-first">
       <div class="col-sm-12">
-        <h3 class="text-center">Nous nous diférencions par</h3>
+        <h3 class="text-center">Notre équipe</h3>
       </div>
     </div>
 
-    <div class="row">
+    <div class="row padding-20 section-last">
 
       <div class="col-sm-4">
-        <div class="team-img">
-          <img src="tralala">
+        <div class="row">
+          <div class="col-xs-10 col-xs-offset-1 team-img">
+            <img src="img/members/bastien.jpg" alt="collaboateur">
+          </div>
         </div>
-        <div class="team-name">
-          <h5>La personne</h5>
-        </div>
-        <div class="tam-description">
-          <p>Une petite description</p>
+        <div class="row">
+          <div class="team-name">
+            <h4 class="text-center">Bastien</h4>
+          </div>
+          <div class="tam-description">
+            <p class="text-center">Directeur</p>
+          </div>
         </div>
       </div>
 
       <div class="col-sm-4">
-        <div class="team-img">
-          <img src="tralala">
+        <div class="row">
+          <div class="col-xs-10 col-xs-offset-1 team-img">
+            <img src="img/members/bastien.jpg" alt="collaboateur">
+          </div>
         </div>
-        <div class="team-name">
-          <h5>La personne</h5>
-        </div>
-        <div class="tam-description">
-          <p>Une petite description</p>
+        <div class="row">
+          <div class="team-name">
+            <h4 class="text-center">Bastien2</h4>
+          </div>
+          <div class="tam-description">
+            <p class="text-center">Ingégnieur</p>
+          </div>
         </div>
       </div>
 
       <div class="col-sm-4">
-        <div class="team-img">
-          <img src="tralala">
+        <div class="row">
+          <div class="col-xs-10 col-xs-offset-1 team-img">
+            <img src="img/members/bastien.jpg" alt="collaboateur">
+          </div>
         </div>
-        <div class="team-name">
-          <h5>La personne</h5>
-        </div>
-        <div class="tam-description">
-          <p>Une petite description</p>
+        <div class="row">
+          <div class="team-name">
+            <h4 class="text-center">Bastien3</h4>
+          </div>
+          <div class="tam-description">
+            <p class="text-center">Technicien</p>
+          </div>
         </div>
       </div>
 

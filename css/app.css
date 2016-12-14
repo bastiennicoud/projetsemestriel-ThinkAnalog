@@ -5,7 +5,10 @@
 
 @charset "utf-8";
 
-/* Chargement des polices */
+/****************************************************************/
+/* Chargement des polices                                       */
+/****************************************************************/
+
 @font-face {
     font-family: "HelveticaNeueLTSd Bd";
     src: url(../fonts/HelveticaNeueLTStdBd.otf);
@@ -25,6 +28,10 @@
     font-family: "HelveticaNeueLTSd Th";
     src: url(../fonts/HelveticaNeueLTStdTh.otf);
 }
+
+/****************************************************************/
+/* Body - regles globales                                       */
+/****************************************************************/
 
 body {
   height: 100%;
@@ -47,17 +54,16 @@ a:hover {
   color: #f83600 !important;
 }
 
-.padding-20 {
-  padding-top: 20px;
-  padding-bottom: 20px;
-}
-
-.media-heading {
+h4 {
   color: #f83600 !important;
 }
 
-h5 {
-  color: #f83600 !important;
+footer {
+  background: #2c3e50; /* For browsers that do not support gradients */
+  background: -webkit-linear-gradient(#2c3e50, #34495e); /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient(#2c3e50, #34495e); /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient(#2c3e50, #34495e); /* For Firefox 3.6 to 15 */
+  background: linear-gradient(#2c3e50, #34495e); /* Standard syntax */
 }
 
 #skills {
@@ -68,8 +74,37 @@ h5 {
   background: linear-gradient(#2c3e50, #34495e); /* Standard syntax */
 }
 
+.color-dark {
+ color: #000000;
+}
+
+.padding-20 {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.media-heading {
+  color: #f83600 !important;
+}
 .col-inverse {
   color: #ecf0f1 !important;
+}
+
+.section-first {
+  margin-top: 50px;
+}
+
+.section-last {
+  margin-bottom: 50px;
+}
+
+@media (max-width: 767px) {
+
+  .media {
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+
 }
 
 /****************************************************************/
@@ -170,6 +205,23 @@ h5 {
 
 .width-maximum {
   width: 100%;
+}
+
+/****************************************************************/
+/* section 4 - membres                                          */
+/****************************************************************/
+
+.team-img>img{
+  width: 100%;
+  border-radius: 50%;
+}
+
+.team-name {
+  margin-top: 20px;
+}
+
+.tam-description {
+  margin-bottom: 20px;
 }
 
 /****************************************************************/
