@@ -41,9 +41,9 @@
     <div class="col-sm-12">
       <nav class="nav nav-inline">
         <a class="nav-link disabled" href="#">Connecté comme <?= $userName ?></a>
-        <a class="nav-link active" href="admin.php">Produits</a>
-        <a class="nav-link active" href="newproduct.php">Nouveau produit</a>
-        <a class="nav-link" href="disconnect.php">Deconnexion</a>
+        <a class="nav-link active color-dark" href="admin.php">Produits</a>
+        <a class="nav-link active color-dark" href="newproduct.php">Nouveau produit</a>
+        <a class="nav-link color-dark" href="disconnect.php">Deconnexion</a>
       </nav>
       <hr>
     </div>

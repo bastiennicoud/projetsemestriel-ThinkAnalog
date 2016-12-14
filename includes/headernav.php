@@ -34,7 +34,7 @@
         <div class="collapse navbar-collapse" id="nav-nav-mobile">
           <ul class="nav navbar-nav navbar-right">
             <li><a class="navbar-link-big" href="index.php">ACCEUIL</a></li>
-            <li><a class="navbar-link-big" href="product.php">PRODUITS</a></li>
+            <li><a class="navbar-link-big" href="products.php">PRODUITS</a></li>
             <li><a class="navbar-link-big" href="contact.php">CONTACT</a></li>
           </ul>
         </div>

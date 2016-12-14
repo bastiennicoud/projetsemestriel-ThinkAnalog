@@ -14,6 +14,8 @@
     $productdescription = htmlspecialchars($_POST['productdescription']);
     $productfeature     = htmlspecialchars($_POST['productfeature']);
     $productconnect     = htmlspecialchars($_POST['productconnect']);
+    $productcategory    = htmlspecialchars($_POST['productcategory']);
+
     // initialisation tableau pour les erreurs
     $errors = array();
 
@@ -42,6 +44,10 @@
       
       // connexion a la bas de données
       require_once '../includes/connectbd.php';
+
+
+
+
       // première requete on inser les données du produit
       // Preparationd de la requète
       if (!$req = $dbconn->prepare("INSERT INTO products (name, header, description) VALUES (?, ?, ?)")) {
@@ -66,6 +72,7 @@
       
 
 
+
       // **********************************************
       // insertion des feature avec une boucle
       $singlefeature = explode("-", $productfeature);
@@ -80,7 +87,7 @@
         }
 
         // Liage des parametres
-        if (!$req->bind_param("ss", $key, $lastID)) {
+        if (!$req->bind_param("si", $key, $lastID)) {
           // Gestion des erreurs
           $errors['liage'] = "Erreur de liage des parametres";
         }
@@ -92,6 +99,9 @@
         }
 
       }
+
+
+
 
       // **********************************************
       // insertion des connecteurs avec une boucle
@@ -107,7 +117,7 @@
         }
 
         // Liage des parametres
-        if (!$req->bind_param("ss", $key, $lastID)) {
+        if (!$req->bind_param("si", $key, $lastID)) {
           // Gestion des erreurs
           $errors['liage'] = "Erreur de liage des parametres";
         }
@@ -119,6 +129,31 @@
         }
 
       }
+
+
+
+
+      // **********************************************
+      // insertion de la categorie du produit
+
+      // Preparationd de la requète
+      if (!$req = $dbconn->prepare("INSERT INTO categorys (category, idx_product) VALUES (?, ?)")) {
+        // Gestion des erreurs
+        $errors['preparation'] = "Erreur de preparation de la requete";
+      }
+
+      // Liage des parametres
+      if (!$req->bind_param("si", $productcategory, $lastID)) {
+        // Gestion des erreurs
+        $errors['liage'] = "Erreur de liage des parametres";
+      }
+        
+      // execution de la requete
+      if (!$req->execute()) {
+        // Gestion des erreurs
+        $errors['execution'] = "Erreur d'execution de la requete";
+      }
+
 
       // on redirige une fois le produit bien créé
       $_SESSION['flash'] = "Le produit a bien eté créé";
@@ -148,9 +183,9 @@
   <div class="row">
     <div class="col-sm-12">
       <nav class="nav nav-inline">
-        <a class="nav-link disabled" href="#">Connecté comme <?= $userName ?></a>
-        <a class="nav-link active" href="admin.php">Produits</a>
-        <a class="nav-link" href="disconnect.php">Deconnexion</a>
+        <a class="nav-link disabled color-dark" href="#">Connecté comme <?= $userName ?></a>
+        <a class="nav-link active color-dark" href="admin.php">Produits</a>
+        <a class="nav-link color-dark" href="disconnect.php">Deconnexion</a>
       </nav>
       <hr>
     </div>
@@ -197,6 +232,16 @@
         <div class="form-group">
           <label for="productconnect">Connectique du produit <small>Séparez chaque connecteur par un -</small></label>
           <textarea class="form-control" id="productconnect" name="productconnect" rows="5"><?php if(isset($errors)){echo $productconnect;} ?></textarea>
+        </div>
+        <div class="form-group">
+          <label for="productcategory">Categorie du produit</label>
+          <select class="form-control" name="productcategory" id="productcategory">
+            <option value="comp">Compresseur</option>
+            <option value="preamp">Préamplificateur</option>
+            <option value="di">Direct Box</option>
+            <option value="mic">Microphone</option>
+            <option value="other">Autre</option>
+          </select>
         </div>
 
 
