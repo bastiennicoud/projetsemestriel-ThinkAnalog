@@ -53,31 +53,37 @@
 
             <div class="radio">
               <label>
-                <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
+                <input type="radio" name="optionsRadios" id="optionsRadios1" value="all" checked>
+                Tous
+              </label>
+            </div>
+            <div class="radio">
+              <label>
+                <input type="radio" name="optionsRadios" id="optionsRadios1" value="comp">
                 Compresseurs
               </label>
             </div>
             <div class="radio">
               <label>
-                <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
+                <input type="radio" name="optionsRadios" id="optionsRadios2" value="preamp">
                 Preamplificateur
               </label>
             </div>
             <div class="radio">
               <label>
-                <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
+                <input type="radio" name="optionsRadios" id="optionsRadios2" value="di">
                 Direct Box
               </label>
             </div>
             <div class="radio">
               <label>
-                <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
+                <input type="radio" name="optionsRadios" id="optionsRadios2" value="mic">
                 Microphone
               </label>
             </div>
             <div class="radio">
               <label>
-                <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
+                <input type="radio" name="optionsRadios" id="optionsRadios2" value="other">
                 Autre
               </label>
             </div>
@@ -93,7 +99,7 @@
       <!-- *************************************** -->
       <!-- Affichage des produits                  -->
       <!-- *************************************** -->
-      <div id="products-display" class="col-sm-9">
+      <div id="products-display" class="col-sm-9 section-last">
 
         <?php foreach ($row as $key): ?>
 
@@ -103,7 +109,8 @@
                 <img src="<?= $key[3] ?>" title="<?= $key[2] ?>" width="100%">
               </div>
               <div class="col-sm-8">
-                <h3><?= $key[0] ?> <small><?= $key[4] ?></small></h3>
+                <h4><?= $key[0] ?></h4>
+                <h4><small><?= $key[4] ?></small></h4>
                 <p><?= $key[1] ?></p>
               </div>
             </div>
