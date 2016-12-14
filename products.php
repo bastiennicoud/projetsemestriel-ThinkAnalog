@@ -126,7 +126,7 @@
       <!-- *************************************** -->
       <!-- Affichage des produits                  -->
       <!-- *************************************** -->
-      <div id="products-display" class="col-sm-9 section-last">
+      <div id="products-display" class="col-sm-9 section-last-big">
 
         <?php foreach ($row as $key): ?>
 
@@ -162,4 +162,6 @@
 
 
 <!-- appel du footer -->
-<?php require "includes/footer.php"; ?>
+<?php 
+$footercollant = true;
+require "includes/footer.php"; ?>

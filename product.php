@@ -87,7 +87,7 @@
       </div>
     </div>
 
-    <div class="row section-last section-first">
+    <div class="row section-last-big section-first">
 
       <div class="col-sm-8">
         <p class="product-header"><?php echo htmlspecialchars($row[0][2]) ?></p>
@@ -120,4 +120,6 @@
 
 
 <!-- appel du footer -->
-<?php require "includes/footer.php"; ?>
+<?php
+$footercollant = true;
+require "includes/footer.php"; ?>

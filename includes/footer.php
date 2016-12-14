@@ -1,6 +1,6 @@
 <!-- FOOTER destiné aux pages du site public -->
 
-    <footer class="dark-footer"> <!-- footer de la page -->
+    <footer class="dark-footer <?php if(isset($footercollant)){ echo "navbar-fixed-bottom";} ?>"> <!-- footer de la page -->
       <div class="container">
         <div class="row padding-20">
 
