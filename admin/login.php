@@ -25,7 +25,7 @@
     // Preparationd de la requète
     if (!$req = $dbconn->prepare("SELECT * FROM users WHERE username = ?")) {
       // Gestion des erreurs
-      $errors['preparation'] = "Erreur de preparation de la requete";9
+      $errors['preparation'] = "Erreur de preparation de la requete";
     }
 
     // Liage des parametres
