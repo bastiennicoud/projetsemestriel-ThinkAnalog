@@ -10,7 +10,7 @@
 
     // demarage du système de session php
     session_start();
-    
+
     // on recupere les differentes informations donnees par l'utilisateur
     $userName   = $_POST['username'];
     $password   = $_POST['password'];
@@ -33,24 +33,24 @@
       // Gestion des erreurs
       $errors['liage'] = "Erreur de liage des parametres";
     }
-    
+
     // execution de la requete
     if (!$req->execute()) {
       // Gestion des erreurs
       $errors['execution'] = "Erreur d'execution de la requete";
     }
-    
+
     // recuper le resultat et conversion en tableau
     $res = $req->get_result();
     $row = $res->fetch_assoc();
-    
+
 
     // si un utilisateur existe correspondant existe on procede a la verification du mdp
     if ($row['username'] && $row['password']) {
 
       // test du mdp en comparant les empreintes
       if (password_verify($password, $row['password'])) {
-        
+
         // si le mdp est ok on rentre l'id et le nom dans la session pour une eventuelle utilisation
         $_SESSION['userID'] = $row['id_user'];
         $_SESSION['userName'] = $row['username'];
@@ -63,7 +63,7 @@
 
           // on crée un cookie pour 7 jours en utilisant le token comme valeur
           setcookie("TAuserremember", $remembertoken , time() + 60*60*24*7);
-          
+
           // on enregistre ce token dans la bd pour pouvoir le comparer lors de la verification
           // Preparationd de la requète
           if (!$req = $dbconn->prepare("UPDATE users SET remember_token = ? WHERE id_user = ?")) {
@@ -76,7 +76,7 @@
             // Gestion des erreurs
             $errors['liage'] = "Erreur de liage des parametres";
           }
-      
+
           // execution de la requete
           if (!$req->execute()) {
             // Gestion des erreurs
@@ -120,7 +120,7 @@
 
     <img src="../img/logo.svg" alt="Logo Think Analog" class="col-xs-10 offset-xs-1 a-logomgbottom">
     <h3 class="text-xs-center">Connectez-vous</h3>
-  
+
     <!-- Affichage des erreurs -->
     <!-- Si errors n'est pas vide on affiche alors les erreurs -->
     <?php if(!empty($errors)): ?>
@@ -133,9 +133,9 @@
           <p><?= $key ?></p>
 
         <?php endforeach; ?>
-      
+
       </div>
-      
+
     <?php endif; ?>
 
     <!-- Formulaire pour le login -->
@@ -164,7 +164,7 @@
     </form>
 
   </div>
-  
+
 </div>
 
 <!-- Inclusion du footer -->
