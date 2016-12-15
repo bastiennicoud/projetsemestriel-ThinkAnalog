@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Client :  localhost:8889
--- Généré le :  Mer 14 Décembre 2016 à 22:40
+-- Généré le :  Jeu 15 Décembre 2016 à 19:37
 -- Version du serveur :  5.6.28
 -- Version de PHP :  7.0.10
 
@@ -161,7 +161,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id_user`, `username`, `password`, `remember_token`) VALUES
-(14, 'Admin', '$2y$10$jGhF2vCFrWGTegmutC9pR.uaUli0Z4AOiujFyfDmnl9dBr84naqRy', '33b07856e08a3e09fab4d6a55ebb1eadf7ae1e5e144e7afebcfbae000b22c7c85e5560f89a2a0280b4');
+(14, 'Admin', '$2y$10$jGhF2vCFrWGTegmutC9pR.uaUli0Z4AOiujFyfDmnl9dBr84naqRy', ''),
+(15, 'bnicoud', '$2y$10$pkjEN9Pd0Bek479Qypap.uUs1fNElxQ7RKDoMzihUHtSFwAv3hJwu', '');
 
 --
 -- Index pour les tables exportées
@@ -240,7 +241,7 @@ ALTER TABLE `products`
 -- AUTO_INCREMENT pour la table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 --
 -- Contraintes pour les tables exportées
 --
