@@ -72,7 +72,7 @@
         </div>
       </div>
     </div>
-    
+
     <div class="row padding-20">
       <div class="col-sm-8 col-sm-offset-2">
         <div class="media">
@@ -88,7 +88,7 @@
         </div>
       </div>
     </div>
-    
+
     <div class="row padding-20 section-last">
       <div class="col-sm-8 col-sm-offset-2">
         <div class="media">
@@ -135,7 +135,7 @@
           </div>
           <div class="media-body">
             <p class="col-inverse">
-              Des produits au caractére et au son analogique modernes.
+              Des produits au caractére et au son analogique modernes. Un son fidèle et précis.
             </p>
           </div>
         </div>
@@ -148,7 +148,7 @@
           </div>
           <div class="media-body">
             <p class="col-inverse">
-              Des materiaux de qualité, un traitement rigoureux des composants.
+              Des materiaux de qualité, un traitement rigoureux des circuits. Une selection de composants qualitatifs.
             </p>
           </div>
         </div>
@@ -161,12 +161,12 @@
           </div>
           <div class="media-body">
             <p class="col-inverse">
-              Une fabrication main meticuleuse, par des proffesionnels passionés.
+              Une fabrication main meticuleuse, par des proffesionnels passionés. Des test pointus.
             </p>
           </div>
         </div>
       </div>
-      
+
     </div>
 
   </div>
@@ -216,7 +216,7 @@
         </div>
         <div class="row">
           <div class="team-name">
-            <h4 class="text-center">Bastien2</h4>
+            <h4 class="text-center">Pedro</h4>
           </div>
           <div class="tam-description">
             <p class="text-center">Ingégnieur</p>
@@ -227,12 +227,12 @@
       <div class="col-sm-4">
         <div class="row">
           <div class="col-xs-10 col-xs-offset-1 team-img">
-            <img src="img/members/bastien.jpg" alt="collaboateur">
+            <img src="img/members/lego.jpg" alt="collaboateur">
           </div>
         </div>
         <div class="row">
           <div class="team-name">
-            <h4 class="text-center">Bastien3</h4>
+            <h4 class="text-center">Lego</h4>
           </div>
           <div class="tam-description">
             <p class="text-center">Technicien</p>
@@ -243,7 +243,7 @@
     </div>
 
   </div>
-      
+
 </section>
 
 <!-- appel du footer -->
