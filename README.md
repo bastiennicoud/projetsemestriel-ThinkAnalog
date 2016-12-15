@@ -5,3 +5,7 @@ Projet réalisé dans le cadre de ma foramtion de médiamaticien.
 
 Création d'un site web pour une entreprise fictive de fabrication main d'appareils analogiques de tratement du signal audio.
 Ajouter a ce site web une partie back-end pour pouvoir ajouter des produits facilement.
+
+>Pour tester la partie administrative les login sont:
+>Username : Admin
+>Pass     : admin
