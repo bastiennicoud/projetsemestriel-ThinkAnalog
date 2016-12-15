@@ -62,7 +62,7 @@
           $remembertoken = sha1($row['username'] . "tralala") . $row['id_user'] . sha1($row['username']);
 
           // on crée un cookie pour 7 jours en utilisant le token comme valeur
-          setcookie('TAuserremember', $remembertoken , time() + 60*60*24*7);
+          setcookie("TAuserremember", $remembertoken , time() + 60*60*24*7);
           
           // on enregistre ce token dans la bd pour pouvoir le comparer lors de la verification
           // Preparationd de la requète
