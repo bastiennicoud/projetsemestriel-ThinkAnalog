@@ -1,5 +1,5 @@
 /* Bastien Nicoud - Think Analog */
-/* Projet semestriel - novembre 2016 */
+/* Projet semestriel - décembre 2016 */
 
 /* Toutes les classes spécifique a la partie administrative du site prennent le prefix a */
 
@@ -58,6 +58,7 @@ h4 {
   color: #f83600 !important;
 }
 
+/* Footer foncé pour la partie publique du site */
 .dark-footer {
   background: #2c3e50; /* For browsers that do not support gradients */
   background: -webkit-linear-gradient(#2c3e50, #34495e); /* For Safari 5.1 to 6.0 */
@@ -66,6 +67,7 @@ h4 {
   background: linear-gradient(#2c3e50, #34495e); /* Standard syntax */
 }
 
+/* section de l'accueil qui est foncée */
 #skills {
   background: #2c3e50; /* For browsers that do not support gradients */
   background: -webkit-linear-gradient(#2c3e50, #34495e); /* For Safari 5.1 to 6.0 */
@@ -74,10 +76,12 @@ h4 {
   background: linear-gradient(#2c3e50, #34495e); /* Standard syntax */
 }
 
+/* Me permet de passer certains textes au noir */
 .color-dark {
  color: #000000;
 }
 
+/* Po espacer un peu les paragraphes entre eux */
 .padding-20 {
   padding-top: 20px;
   padding-bottom: 20px;
@@ -86,10 +90,12 @@ h4 {
 .media-heading {
   color: #f83600 !important;
 }
+
 .col-inverse {
   color: #ecf0f1 !important;
 }
 
+/* Les deux regles suivantes me permettent d'espacer plus les elements de debut et de fin d'une section */
 .section-first {
   margin-top: 50px;
 }
@@ -102,6 +108,7 @@ h4 {
   margin-bottom: 100px;
 }
 
+/* pour espacer un peu plus les media->(mise en forme bootstrap que j'utilise sur la page d'accueil) sur petits ecrans */
 @media (max-width: 767px) {
 
   .media {
@@ -111,19 +118,35 @@ h4 {
 
 }
 
+/* Pour le paragraphe d'accroche dans la page des produis */
 .product-header {
   font-weight: bold;
   font-size: 18px;
 }
 
+/* Footer, largeur maximum */
 footer {
   width: 100%;
+}
+
+/* 2 classes pour l'afichage des mignatures des produits, j'utilise les flexbox pour que ma colonne fasse la hauteur de ma row */
+.product-row {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.product-img-small {
+  display: flex;
+  flex-direction: column;
+  background-size: cover;
+  background-position: center;
 }
 
 /****************************************************************/
 /* Navigation                                                   */
 /****************************************************************/
 
+/* Couleur et hauteur de la navigation */
 .navbar {
   height: 140px;
   margin-bottom: 0px;
@@ -135,14 +158,17 @@ footer {
   background: linear-gradient(#2c3e50, #34495e); /* Standard syntax */
 }
 
+/* Couleur liens de la navigation */
 .navbar-default .navbar-nav>li>a {
   color: #ecf0f1;
 }
 
+/* Hauteur du conteneur dans la nav */
 .navbar-height {
   height: 140px;
 }
 
+/* espacement des liens sur grands ecrans */
 @media (min-width: 768px) {
 
   .navbar-nav {
@@ -151,10 +177,12 @@ footer {
 
 }
 
+/* Eneleve la bordure sur le menu derouland (petits ecrans) */
 .navbar-collapse {
   border-top: none;
 }
 
+/* Position des liens dans le menu deroulant sur petits ecrans */
 @media (max-width: 767px) {
 
   .navbar-link-big {
@@ -165,14 +193,12 @@ footer {
 
 }
 
+/* Taille des liens */
 .navbar-link-big {
   font-size: 20px;
 }
 
-.l-active {
-  color: #95a5a6 !important;
-}
-
+/* Fond du menu deroulant */
 .navbar-collapse {
   background: #2c3e50; /* For browsers that do not support gradients */
   background: -webkit-linear-gradient(#2c3e50, #34495e); /* For Safari 5.1 to 6.0 */
@@ -181,20 +207,25 @@ footer {
   background: linear-gradient(#2c3e50, #34495e); /* Standard syntax */
 }
 
+/* Position du bouton et duree d'animation */
 .navbar-toggle {
   margin-top: 82px;
   transition-duration: 0.3s;
 }
 
+/* Taille du log dans navigation */
 .navbar-brand-img{
   height: 70px;
 }
 
+/* Espacements autour du logo */
 .navbar-brand {
   padding: 20px;
   padding-top: 60px;
 }
 
+
+/* sur petits ecrans, modification de la taille du logo et position */
 @media (max-width: 767px) {
 
   .navbar-brand-img{
@@ -211,11 +242,7 @@ footer {
 /* Slider                                                       */
 /****************************************************************/
 
-.second-plan {
-  position: relative;
-  z-index: -999999;
-}
-
+/* slider a la largeur maximum de la page */
 .width-maximum {
   width: 100%;
 }
@@ -224,11 +251,13 @@ footer {
 /* section 4 - membres                                          */
 /****************************************************************/
 
+/* taille des images des membres et radius pour rendre le cadre arrondi */
 .team-img>img{
   width: 100%;
   border-radius: 50%;
 }
 
+/* Espacements des nom en dessous des phptos des meembres */
 .team-name {
   margin-top: 20px;
 }
@@ -245,6 +274,7 @@ footer {
   background: #ecf0f1;
 }
 
+/* position de la box de login */
 .a-loginbox {
   background: #bdc3c7;
   padding: 20px;
@@ -253,16 +283,19 @@ footer {
   margin-bottom: 20%;
 }
 
+/* marge sous le log de la loginbox */
 .a-logomgbottom {
   margin-bottom: 20px;
 }
 
+/* centrgae du bouton loginbox */
 .a-btncenter {
   display: block;
   margin-left: auto;
   margin-right: auto;
 }
 
+/* Position du lien de retour a l'aceuil think analog dans la page de login */
 .a-asize {
   display: block;
   margin-left: auto;
@@ -271,10 +304,12 @@ footer {
   font-size: 10pt;
 }
 
+/* Pour espacer la premiere ligne */
 .a-first-row{
   margin-top: 30px;
 }
 
+/* Pour espacer le footer */
 .a-footerrow{
   margin.top: 30px;
   margin-bottom: 30px;

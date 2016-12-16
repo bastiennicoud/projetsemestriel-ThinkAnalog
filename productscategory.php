@@ -14,7 +14,7 @@
 
   // je teste category, si valleur est all je réafiche tous les produits
   if ($category == "all") {
-    
+
     // requete pour recuperer tous les produits
     // Preparation de la requète
     if (!$req = $dbconn->prepare("
@@ -26,7 +26,7 @@
       // Gestion des erreurs
       $errors['preparation'] = "Erreur de preparation de la requete";
     }
-        
+
     // execution de la requete
     if (!$req->execute()) {
       // Gestion des erreurs
@@ -57,7 +57,7 @@
       // Gestion des erreurs
       $errors['liage'] = "Erreur de liage des parametres";
     }
-        
+
     // execution de la requete
     if (!$req->execute()) {
       // Gestion des erreurs
@@ -86,12 +86,12 @@
 
     <?php endforeach; ?>
 
-            
-        
+
+
   </div>
 
 </div>
-        
+
 <?php endif; ?>
 
 
@@ -101,11 +101,8 @@
 <?php foreach ($row as $key): ?>
 
   <div class="thumbnail">
-    <div class="row">
-      <div class="col-sm-4">
-        <a href="product.php?productid=<?= $key[0] ?>">
-          <img src="<?= $key[4] ?>" title="<?= $key[3] ?>" width="100%">
-        </a>
+    <div class="row product-row">
+      <div class="col-sm-4 product-img-small" style="background-image: url(<?= $key[4] ?>)">
       </div>
       <div class="col-sm-8">
         <a href="product.php?productid=<?= $key[0] ?>">

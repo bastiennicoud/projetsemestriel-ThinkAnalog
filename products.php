@@ -125,12 +125,10 @@
         <?php foreach ($row as $key): ?>
 
           <div class="thumbnail">
-            <div class="row">
+            <div class="row product-row">
 
-              <div class="col-sm-4 product-img-small">
-                <a href="product.php?productid=<?= $key[0] ?>">
-                  <img src="<?= $key[4] ?>" title="<?= $key[3] ?>" class="imagefill">
-                </a>
+              <div class="col-sm-4 product-img-small" style="background-image: url(<?= $key[4] ?>)">
+                <!-- ICI s'affiche la miniature du produit en background css -->
               </div>
 
               <div class="col-sm-8">

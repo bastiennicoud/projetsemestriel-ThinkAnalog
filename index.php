@@ -14,7 +14,7 @@
     <div class="row">
 
       <!-- Slider -->
-      <div id="slider-page-acceuil" class="carousel slide second-plan" data-ride="carousel">
+      <div id="slider-page-acceuil" class="carousel slide" data-ride="carousel">
         <div class="carousel-inner" role="listbox">
           <div class="item active">
             <img src="img/slider/slide1.jpg" alt="lightning" class="width-maximum">
