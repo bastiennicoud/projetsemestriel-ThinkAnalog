@@ -22,7 +22,7 @@
     // Gestion des erreurs
     $errors['preparation'] = "Erreur de preparation de la requete";
   }
-      
+
   // execution de la requete
   if (!$req->execute()) {
     // Gestion des erreurs
@@ -58,9 +58,9 @@
           <p><?= $key ?></p>
 
         <?php endforeach; ?>
-      
+
       </div>
-      
+
     <?php endif; ?>
 
 
@@ -129,7 +129,7 @@
 
               <div class="col-sm-4 product-img-small">
                 <a href="product.php?productid=<?= $key[0] ?>">
-                  <img src="<?= $key[4] ?>" title="<?= $key[3] ?>">
+                  <img src="<?= $key[4] ?>" title="<?= $key[3] ?>" class="imagefill">
                 </a>
               </div>
 
@@ -145,17 +145,17 @@
           </div>
 
         <?php endforeach; ?>
-        
+
       </div>
 
     </div>
   </div>
-  
+
 </section>
 
 
 
 <!-- appel du footer -->
-<?php 
+<?php
 $footercollant = true;
 require "includes/footer.php"; ?>

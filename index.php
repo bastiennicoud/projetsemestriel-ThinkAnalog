@@ -211,12 +211,12 @@
       <div class="col-sm-4">
         <div class="row">
           <div class="col-xs-10 col-xs-offset-1 team-img">
-            <img src="img/members/bastien.jpg" alt="collaboateur">
+            <img src="img/members/yvan.jpg" alt="collaboateur">
           </div>
         </div>
         <div class="row">
           <div class="team-name">
-            <h4 class="text-center">Pedro</h4>
+            <h4 class="text-center">Yvan</h4>
           </div>
           <div class="tam-description">
             <p class="text-center">Ingégnieur</p>
