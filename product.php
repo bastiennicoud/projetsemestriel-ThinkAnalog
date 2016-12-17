@@ -5,7 +5,7 @@
   // *******************************************************************************
 
   if (isset($_GET['productid'])) {
-    
+
     // si il y a un id dans GET on va chercher le produit corespontant dans la bd
 
     // on recupere l'id qui est dans get
@@ -34,7 +34,7 @@
       // Gestion des erreurs
       $errors['liage'] = "Erreur de liage des parametres";
     }
-        
+
     // execution de la requete
     if (!$req->execute()) {
       // Gestion des erreurs
@@ -45,12 +45,12 @@
     $res = $req->get_result();
     $row = $res->fetch_all();
 
-    // ici je passe les caractéristiques dans le nom des clef d'un tableau pour supprimer les doublons 
+    // ici je passe les caractéristiques dans le nom des clef d'un tableau pour supprimer les doublons
     foreach ($row as $key) {
       $filtredfeature[$key[7]] = 1;
     }
 
-    // ici je passe les connecteurs dans le nom des clef d'un tableau pour supprimer les doublons 
+    // ici je passe les connecteurs dans le nom des clef d'un tableau pour supprimer les doublons
     foreach ($row as $key) {
       $filtredconnectors[$key[8]] = 1;
     }
@@ -115,7 +115,7 @@
     </div>
 
   </div>
-  
+
 </section>
 
 
